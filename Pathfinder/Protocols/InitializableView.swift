@@ -20,35 +20,33 @@ public protocol InitializableView {
     func configureLayout()
 }
 
-extension InitializableView {
+public extension InitializableView {
 
-    /// Main method that should call other methods in particular order.
-    public func initializeView() {
-
+    func initializeView() {
+        addViews()
+        configureLayout()
+        bindViews()
+        configureAppearance()
+        localize()
     }
 
-    /// Method for adding views to current view.
-    public func addViews() {
-
+    func addViews() {
+        //
     }
 
-    /// Method for binding to data or user actions.
-    public func bindViews() {
-
+    func bindViews() {
+        //
     }
 
-    /// Appearance configuration method.
-    public func configureAppearance() {
-
+    func configureAppearance() {
+        //
     }
 
-    /// Localization method.
-    public func localize() {
-
+    func localize() {
+        //
     }
 
-    /// Confgiure layout of subviews.
-    public func configureLayout() {
-        
+    func configureLayout() {
+        //
     }
 }

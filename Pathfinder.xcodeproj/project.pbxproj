@@ -18,7 +18,7 @@
 		23707BBB2442869F00175FD9 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BBA2442869F00175FD9 /* ApplicationCoordinator.swift */; };
 		23707BBD2442871300175FD9 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BBC2442871300175FD9 /* BaseCoordinator.swift */; };
 		23707BC02442878F00175FD9 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BBF2442878F00175FD9 /* Coordinatable.swift */; };
-		23707BC2244287D600175FD9 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BC1244287D600175FD9 /* Helpers.swift */; };
+		23707BC2244287D600175FD9 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BC1244287D600175FD9 /* Block.swift */; };
 		23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BC4244288B900175FD9 /* CoordinatorGroup.swift */; };
 		23707BCB2442897B00175FD9 /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BCA2442897B00175FD9 /* Instructor.swift */; };
 		23707BCD2442899900175FD9 /* CoordinatorInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707BCC2442899900175FD9 /* CoordinatorInstructor.swift */; };
@@ -70,7 +70,7 @@
 		23707BBA2442869F00175FD9 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		23707BBC2442871300175FD9 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		23707BBF2442878F00175FD9 /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
-		23707BC1244287D600175FD9 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		23707BC1244287D600175FD9 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		23707BC4244288B900175FD9 /* CoordinatorGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorGroup.swift; sourceTree = "<group>"; };
 		23707BCA2442897B00175FD9 /* Instructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
 		23707BCC2442899900175FD9 /* CoordinatorInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorInstructor.swift; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 				23707C0624429C3A00175FD9 /* Views */,
 				23707BE324428ED100175FD9 /* Protocols */,
 				23707BD624428CB800175FD9 /* Extensions */,
+				23707C192442AFA600175FD9 /* Helpers */,
 				23707BAF24427B5100175FD9 /* Resources */,
 			);
 			path = Pathfinder;
@@ -168,8 +169,6 @@
 		23707BAD24427A9900175FD9 /* ApplicationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				23707BC1244287D600175FD9 /* Helpers.swift */,
-				23707BB424427C6A00175FD9 /* Constants.swift */,
 				23707BB82442866800175FD9 /* Delegates */,
 			);
 			path = ApplicationLayer;
@@ -370,6 +369,15 @@
 			path = MapCoordinator;
 			sourceTree = "<group>";
 		};
+		23707C192442AFA600175FD9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				23707BC1244287D600175FD9 /* Block.swift */,
+				23707BB424427C6A00175FD9 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,7 +526,7 @@
 				23707BB724427C7800175FD9 /* UIImage+Extensions.swift in Sources */,
 				23707BFE2442997D00175FD9 /* ModuleFactory+TabBar.swift in Sources */,
 				23707BD124428A0F00175FD9 /* ModuleFactory.swift in Sources */,
-				23707BC2244287D600175FD9 /* Helpers.swift in Sources */,
+				23707BC2244287D600175FD9 /* Block.swift in Sources */,
 				23707BF12442948400175FD9 /* ApplicationStorage.swift in Sources */,
 				23707C0A24429CC700175FD9 /* TabBarView.swift in Sources */,
 				23707BEB244292D700175FD9 /* ApplicationModuleFactory.swift in Sources */,
