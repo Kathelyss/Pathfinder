@@ -4,14 +4,14 @@ final class NavigationController: UINavigationController, InitializableView, UIG
 
     enum Style {
         case white
-        case grey
+        case gray
 
         var color: UIColor {
             switch self {
             case .white:
                 return .white
 
-            case .grey:
+            case .gray:
                 return .gray
             }
         }

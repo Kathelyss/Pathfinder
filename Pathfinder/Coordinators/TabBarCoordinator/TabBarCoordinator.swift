@@ -35,12 +35,9 @@ final class TabBarCoordinator: BaseCoordinator {
 
         switch item {
         case .map:
-            break
-//            coordinator = MoreCoordinator(router: router,
-//                                          moduleFactory: moduleFactory,
-//                                          coordinatorFactory: coordinatorFactory,
-//                                          mainStorage: storage,
-//                                          loginService: applicationStorage.registrationService)
+            coordinator = MapCoordinator(router: router,
+                                         moduleFactory: moduleFactory,
+                                         mainStorage: storage)
         }
 
         coordinator.onFinish = onFinish

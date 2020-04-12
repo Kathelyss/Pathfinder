@@ -1,6 +1,6 @@
 import Foundation
 
-class TabBarStorage {
+class TabBarStorage: MainStorage {
 
     let tabBarModule: TabBarModule
 
