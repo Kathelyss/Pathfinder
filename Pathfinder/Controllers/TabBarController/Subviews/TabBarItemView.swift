@@ -29,7 +29,7 @@ final class TabBarItemView: BaseView {
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(Constants.smallInset)
             make.centerX.equalToSuperview()
-            make.width.equalTo(imageView.snp.height)
+            make.size.equalTo(30)
         }
 
         titleLabel.snp.makeConstraints { make in
@@ -103,7 +103,7 @@ extension TabBarItemView {
         var backgroundColor: UIColor {
             switch self {
             case .selected:
-                return UIColor.systemTeal.withAlphaComponent(0.8)
+                return UIColor.systemGreen.withAlphaComponent(0.8)
 
             case .default:
                 return .white

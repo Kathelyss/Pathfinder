@@ -73,6 +73,8 @@ final class TabBarView: BaseView {
 
         roundedContainer.layer.cornerRadius = Constants.cornerRadius
         roundedContainer.clipsToBounds = true
+        roundedContainer.layer.borderColor = UIColor.systemGreen.cgColor
+        roundedContainer.layer.borderWidth = 0.5
 
         layer.cornerRadius = Constants.cornerRadius
     }
