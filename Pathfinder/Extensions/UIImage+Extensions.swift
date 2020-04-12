@@ -18,7 +18,15 @@ extension UIImage {
 
     // MARK: - Tabbar
     
-    static var tabBarMap: UIImage {
-        #imageLiteral(resourceName: "closeIcon")
+    static var tabBarGeneral: UIImage {
+         #imageLiteral(resourceName: "tabBarGeneral")
+    }
+
+    static var tabBarWaybill: UIImage {
+         #imageLiteral(resourceName: "tabBarWaybill")
+    }
+
+    static var tabBarPath: UIImage {
+        #imageLiteral(resourceName: "tabBarPath")
     }
 }

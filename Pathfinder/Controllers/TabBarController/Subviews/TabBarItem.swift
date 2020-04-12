@@ -1,9 +1,9 @@
 import UIKit
 
 enum TabBarItem: Int, CaseIterable {
-    case info
-    case list
-    case map
+    case general
+    case waybill
+    case path
 
     var tabBarItem: TabBarItemView {
         TabBarItemView(title: title, image: image)
@@ -14,27 +14,27 @@ private extension TabBarItem {
 
     var title: String {
         switch self {
-        case .info:
+        case .general:
             return "Инфо"
 
-        case .list:
+        case .waybill:
             return "Накладная"
 
-        case .map:
+        case .path:
             return "Карта"
         }
     }
 
     var image: UIImage {
         switch self {
-        case .info:
-            return .add
+        case .general:
+            return .tabBarGeneral
 
-        case .list:
-            return .actions
+        case .waybill:
+            return .tabBarWaybill
 
-        case .map:
-            return .remove
+        case .path:
+            return .tabBarPath
         }
     }
 }

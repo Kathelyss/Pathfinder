@@ -4,6 +4,6 @@ protocol ApplicationModuleFactory {
 
 }
 
-extension ModuleFactory: InfoModuleFactory {}
-extension ModuleFactory: ListModuleFactory {}
-extension ModuleFactory: MapModuleFactory {}
+extension ModuleFactory: GeneralModuleFactory {}
+extension ModuleFactory: WaybillModuleFactory {}
+extension ModuleFactory: PathModuleFactory {}

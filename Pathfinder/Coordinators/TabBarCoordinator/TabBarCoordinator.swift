@@ -34,19 +34,19 @@ final class TabBarCoordinator: BaseCoordinator {
         let coordinator: Coordinatable
 
         switch item {
-        case .info:
-            coordinator = InfoCoordinator(router: router,
-                                          moduleFactory: moduleFactory,
-                                          mainStorage: storage)
-        case .list:
-            coordinator = ListCoordinator(router: router,
-                                          moduleFactory: moduleFactory,
-                                          mainStorage: storage)
+        case .general:
+            coordinator = GeneralCoordinator(router: router,
+                                             moduleFactory: moduleFactory,
+                                             mainStorage: storage)
+        case .waybill:
+            coordinator = WaybillCoordinator(router: router,
+                                             moduleFactory: moduleFactory,
+                                             mainStorage: storage)
 
-        case .map:
-            coordinator = MapCoordinator(router: router,
-                                         moduleFactory: moduleFactory,
-                                         mainStorage: storage)
+        case .path:
+            coordinator = PathCoordinator(router: router,
+                                          moduleFactory: moduleFactory,
+                                          mainStorage: storage)
         }
 
         coordinator.onFinish = onFinish
