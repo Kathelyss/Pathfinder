@@ -57,6 +57,7 @@ final class TabBarItemView: BaseView {
     // MARK: - Private
 
     private func configureAppearance(forState state: State) {
+        titleLabel.font = state.font
         titleLabel.textColor = state.textColor
         imageView.tintColor = state.tintColor
         backgroundColor = state.backgroundColor
@@ -68,6 +69,16 @@ extension TabBarItemView {
     enum State {
         case selected
         case `default`
+
+        var font: UIFont {
+            switch self {
+            case .selected:
+                return UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)
+                
+            case .default:
+                return UIFont.monospacedSystemFont(ofSize: 14, weight: .medium)
+            }
+        }
 
         var textColor: UIColor {
             switch self {
@@ -92,7 +103,7 @@ extension TabBarItemView {
         var backgroundColor: UIColor {
             switch self {
             case .selected:
-                return UIColor.systemGreen.withAlphaComponent(0.8)
+                return UIColor.systemTeal.withAlphaComponent(0.8)
 
             case .default:
                 return .white

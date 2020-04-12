@@ -38,6 +38,10 @@ final class TabBarCoordinator: BaseCoordinator {
             coordinator = InfoCoordinator(router: router,
                                           moduleFactory: moduleFactory,
                                           mainStorage: storage)
+        case .list:
+            coordinator = ListCoordinator(router: router,
+                                          moduleFactory: moduleFactory,
+                                          mainStorage: storage)
 
         case .map:
             coordinator = MapCoordinator(router: router,

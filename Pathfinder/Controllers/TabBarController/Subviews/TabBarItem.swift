@@ -2,6 +2,7 @@ import UIKit
 
 enum TabBarItem: Int, CaseIterable {
     case info
+    case list
     case map
 
     var tabBarItem: TabBarItemView {
@@ -16,6 +17,9 @@ private extension TabBarItem {
         case .info:
             return "Инфо"
 
+        case .list:
+            return "Накладная"
+
         case .map:
             return "Карта"
         }
@@ -24,10 +28,13 @@ private extension TabBarItem {
     var image: UIImage {
         switch self {
         case .info:
+            return .add
+
+        case .list:
             return .actions
 
         case .map:
-            return .add
+            return .remove
         }
     }
 }

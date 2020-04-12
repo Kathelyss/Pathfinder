@@ -57,6 +57,11 @@
 		23707C2224437E2400175FD9 /* InfoModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2124437E2400175FD9 /* InfoModuleFactory.swift */; };
 		23707C2524437E3F00175FD9 /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2424437E3F00175FD9 /* InfoCoordinator.swift */; };
 		23707C2724437FDA00175FD9 /* UIView+RoundedShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */; };
+		23707C292443943C00175FD9 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C282443943C00175FD9 /* ListViewController.swift */; };
+		23707C2C2443948400175FD9 /* ModuleFactory+ListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2B2443948400175FD9 /* ModuleFactory+ListModule.swift */; };
+		23707C2E244395DF00175FD9 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2D244395DF00175FD9 /* ListViewModel.swift */; };
+		23707C3024439B9500175FD9 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2F24439B9500175FD9 /* ListCoordinator.swift */; };
+		23707C3324439BD300175FD9 /* ListModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C3224439BD300175FD9 /* ListModuleFactory.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +118,11 @@
 		23707C2124437E2400175FD9 /* InfoModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModuleFactory.swift; sourceTree = "<group>"; };
 		23707C2424437E3F00175FD9 /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
 		23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedShadow.swift"; sourceTree = "<group>"; };
+		23707C282443943C00175FD9 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		23707C2B2443948400175FD9 /* ModuleFactory+ListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModuleFactory+ListModule.swift"; sourceTree = "<group>"; };
+		23707C2D244395DF00175FD9 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		23707C2F24439B9500175FD9 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		23707C3224439BD300175FD9 /* ListModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModuleFactory.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +180,7 @@
 				23707BFA2442981200175FD9 /* TabBarController */,
 				23707C0D2442A88800175FD9 /* MapController */,
 				23707C1C24437D1600175FD9 /* InfoController */,
+				23707C2A2443944500175FD9 /* ListController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +232,7 @@
 				23707BF4244295D100175FD9 /* TabBarCoordinator */,
 				23707C162442ABE300175FD9 /* MapCoordinator */,
 				23707C2324437E2800175FD9 /* InfoCoordinator */,
+				23707C3124439B9C00175FD9 /* ListCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -406,6 +418,25 @@
 			path = InfoCoordinator;
 			sourceTree = "<group>";
 		};
+		23707C2A2443944500175FD9 /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				23707C2B2443948400175FD9 /* ModuleFactory+ListModule.swift */,
+				23707C282443943C00175FD9 /* ListViewController.swift */,
+				23707C2D244395DF00175FD9 /* ListViewModel.swift */,
+			);
+			path = ListController;
+			sourceTree = "<group>";
+		};
+		23707C3124439B9C00175FD9 /* ListCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				23707C2F24439B9500175FD9 /* ListCoordinator.swift */,
+				23707C3224439BD300175FD9 /* ListModuleFactory.swift */,
+			);
+			path = ListCoordinator;
+			sourceTree = "<group>";
+		};
 		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +584,8 @@
 				23707C2024437DC100175FD9 /* ModuleFactory+InfoModule.swift in Sources */,
 				23707C1E24437DA200175FD9 /* InfoViewModel.swift in Sources */,
 				23707C152442ABB100175FD9 /* MapCoordinator.swift in Sources */,
+				23707C3024439B9500175FD9 /* ListCoordinator.swift in Sources */,
+				23707C3324439BD300175FD9 /* ListModuleFactory.swift in Sources */,
 				23707C1B24437D1200175FD9 /* InfoViewController.swift in Sources */,
 				23707C112442A90C00175FD9 /* MapViewController.swift in Sources */,
 				23707BB724427C7800175FD9 /* UIImage+Extensions.swift in Sources */,
@@ -578,13 +611,16 @@
 				23707BE524428EE300175FD9 /* InitializableView.swift in Sources */,
 				23707BF3244294D400175FD9 /* ApplicationState.swift in Sources */,
 				23707BBB2442869F00175FD9 /* ApplicationCoordinator.swift in Sources */,
+				23707C292443943C00175FD9 /* ListViewController.swift in Sources */,
 				23707C0324429B7B00175FD9 /* TabBarItemView.swift in Sources */,
 				23707BCD2442899900175FD9 /* CoordinatorInstructor.swift in Sources */,
 				23707BCF244289D700175FD9 /* CoordinatorFactory.swift in Sources */,
 				23707C0524429BEE00175FD9 /* BaseView.swift in Sources */,
+				23707C2C2443948400175FD9 /* ModuleFactory+ListModule.swift in Sources */,
 				23707BDB24428D5200175FD9 /* AppRoutable.swift in Sources */,
 				23707C0C2442A18B00175FD9 /* MainStorage.swift in Sources */,
 				23707BE224428DC400175FD9 /* Presentable.swift in Sources */,
+				23707C2E244395DF00175FD9 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

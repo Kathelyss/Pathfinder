@@ -4,5 +4,6 @@ protocol ApplicationModuleFactory {
 
 }
 
-extension ModuleFactory: MapModuleFactory {}
 extension ModuleFactory: InfoModuleFactory {}
+extension ModuleFactory: ListModuleFactory {}
+extension ModuleFactory: MapModuleFactory {}
