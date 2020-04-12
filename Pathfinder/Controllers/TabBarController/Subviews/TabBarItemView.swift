@@ -19,7 +19,8 @@ final class TabBarItemView: BaseView {
     override func addViews() {
         super.addViews()
 
-        addSubviews(imageView, titleLabel)
+        addSubview(imageView)
+        addSubview(titleLabel)
     }
 
     override func configureLayout() {

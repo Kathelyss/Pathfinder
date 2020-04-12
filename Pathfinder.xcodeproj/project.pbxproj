@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,6 +47,8 @@
 		23707C0524429BEE00175FD9 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C0424429BEE00175FD9 /* BaseView.swift */; };
 		23707C0824429C9400175FD9 /* TabBarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C0724429C9400175FD9 /* TabBarViewDelegate.swift */; };
 		23707C0A24429CC700175FD9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C0924429CC700175FD9 /* TabBarView.swift */; };
+		23707C0C2442A18B00175FD9 /* MainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C0B2442A18B00175FD9 /* MainStorage.swift */; };
+		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,10 @@
 		23707C0424429BEE00175FD9 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		23707C0724429C9400175FD9 /* TabBarViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewDelegate.swift; sourceTree = "<group>"; };
 		23707C0924429CC700175FD9 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		23707C0B2442A18B00175FD9 /* MainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStorage.swift; sourceTree = "<group>"; };
+		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
+		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +117,8 @@
 			children = (
 				23707B972442775100175FD9 /* Pathfinder */,
 				23707B962442775100175FD9 /* Products */,
+				BDCE244B1C7DAA64B1A90589 /* Pods */,
+				FC21C9A1F5E9A2A7302F3700 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,6 +297,7 @@
 			children = (
 				23707BF5244295F500175FD9 /* TabBarCoordinator.swift */,
 				23707BF72442973100175FD9 /* TabBarStorage.swift */,
+				23707C0B2442A18B00175FD9 /* MainStorage.swift */,
 			);
 			path = TabBarCoordinator;
 			sourceTree = "<group>";
@@ -329,6 +339,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */,
+				BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FC21C9A1F5E9A2A7302F3700 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,9 +363,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23707BA92442775400175FD9 /* Build configuration list for PBXNativeTarget "Pathfinder" */;
 			buildPhases = (
+				05448EC9EC8DF678F291C174 /* [CP] Check Pods Manifest.lock */,
 				23707B912442775100175FD9 /* Sources */,
 				23707B922442775100175FD9 /* Frameworks */,
 				23707B932442775100175FD9 /* Resources */,
+				7B559D7F40A85AA987C1F7CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -395,6 +424,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05448EC9EC8DF678F291C174 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pathfinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B559D7F40A85AA987C1F7CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pathfinder/Pods-Pathfinder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pathfinder/Pods-Pathfinder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pathfinder/Pods-Pathfinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		23707B912442775100175FD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -436,6 +507,7 @@
 				23707BCF244289D700175FD9 /* CoordinatorFactory.swift in Sources */,
 				23707C0524429BEE00175FD9 /* BaseView.swift in Sources */,
 				23707BDB24428D5200175FD9 /* AppRoutable.swift in Sources */,
+				23707C0C2442A18B00175FD9 /* MainStorage.swift in Sources */,
 				23707BE224428DC400175FD9 /* Presentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +650,7 @@
 		};
 		23707BAA2442775400175FD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -595,6 +668,7 @@
 		};
 		23707BAB2442775400175FD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

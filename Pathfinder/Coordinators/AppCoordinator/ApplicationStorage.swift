@@ -1,6 +1,5 @@
 import Foundation
 
-final class ApplicationStorage: RegistrationStorage {
+final class ApplicationStorage {
 
-    let registrationService = RegistrationService()
 }

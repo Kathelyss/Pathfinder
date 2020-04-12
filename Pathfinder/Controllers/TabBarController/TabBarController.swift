@@ -90,7 +90,7 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
 
     private func selectViewController(atIndex index: Int) {
         if let controller = viewControllers?[index],
-            let item = tabBarItems?[safe: index],
+            let item = tabBarItems?[index],
             selectedViewController != controller {
 
             tabBar.selectedItem = item
@@ -144,5 +144,5 @@ extension Constants {
 }
 
 extension Notification.Name {
-    static let tabBarDidSelectIndex = Notification.Name("vtbTabBarDidSelectIndex")
+    static let tabBarDidSelectIndex = Notification.Name("tabBarDidSelectIndex")
 }

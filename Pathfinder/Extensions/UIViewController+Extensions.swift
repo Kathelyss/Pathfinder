@@ -45,7 +45,7 @@ extension UIViewController {
 extension UIViewController {
 
     func setBackButton(with action: Selector = #selector(defaultBackAction)) {
-        let backButtonItem = UIBarButtonItem(image: .navigationBack,
+        let backButtonItem = UIBarButtonItem(image: .backIcon,
                                              style: .plain,
                                              target: self,
                                              action: action)
@@ -54,7 +54,7 @@ extension UIViewController {
 
     func setCloseButton(with action: Selector? = nil, alignLeft: Bool = true) {
         let action = action ?? #selector(defaultCloseAction)
-        let closeButtonItem = UIBarButtonItem(image: .navigationClose,
+        let closeButtonItem = UIBarButtonItem(image: .closeIcon,
                                               style: .plain,
                                               target: self,
                                               action: action)

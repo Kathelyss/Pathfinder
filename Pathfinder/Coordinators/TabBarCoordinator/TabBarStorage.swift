@@ -4,7 +4,7 @@ class TabBarStorage {
 
     let tabBarModule: TabBarModule
 
-    init(tabBarModule: TabBarModule) {
+    init(mainStorage: MainStorage, tabBarModule: TabBarModule) {
         self.tabBarModule = tabBarModule
     }
 }

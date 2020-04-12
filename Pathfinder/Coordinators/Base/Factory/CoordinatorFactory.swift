@@ -5,7 +5,7 @@ final class CoordinatorFactory {
     private let moduleFactory = ModuleFactory()
 
     func makeMainCoordinator(applicationStorage: ApplicationStorage,
-                             mainStorage: MainStorage) -> CoordinatorGroup<TabBarCoordinatorProtocol> {
+                             mainStorage: MainStorage) -> CoordinatorGroup<Coordinatable> {
 
         let tabBarModule = moduleFactory.createTabBarModule()
         let storage = TabBarStorage(mainStorage: mainStorage, tabBarModule: tabBarModule)

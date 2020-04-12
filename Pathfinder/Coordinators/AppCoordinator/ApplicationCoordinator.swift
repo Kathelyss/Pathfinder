@@ -10,7 +10,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     private let coordinatorFactory: CoordinatorFactory
     private let storage: ApplicationStorage
 
-    private var tabBarCoordinator: TabBarCoordinatorProtocol?
+    private var tabBarCoordinator: Coordinatable?
 
     // MARK: - Initialization
 
@@ -32,7 +32,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     // MARK: - Flows
 
     private func runMainFlow() {
-        let group = coordinatorFactory.makeMainCoordinator(applicationStorage: storage)
+        let group = coordinatorFactory.makeMainCoordinator(applicationStorage: storage, mainStorage: MainStorage())
 
         tabBarCoordinator = group.coordinator
 

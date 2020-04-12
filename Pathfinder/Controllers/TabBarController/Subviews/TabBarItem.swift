@@ -1,6 +1,6 @@
 import UIKit
 
-enum TabBarItem: Int, CaseIterable, Scenario {
+enum TabBarItem: Int, CaseIterable {
     case map
 
     var tabBarItem: TabBarItemView {
@@ -20,8 +20,7 @@ private extension TabBarItem {
     var image: UIImage {
         switch self {
         case .map:
-            break
-//            return .tabBarMore
+            return .tabBarMap
         }
     }
 }

@@ -1,1 +1,6 @@
 xcuserdata/
+
+Pods/
+
+*IDEWorkspaceChecks.plist
+*.DS_Store

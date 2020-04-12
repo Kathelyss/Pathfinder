@@ -22,9 +22,9 @@ final class TabBarView: BaseView {
 
     weak var delegate: TabBarViewDelegate?
 
-    var items: [VTBTabBarItemView]?
+    var items: [TabBarItemView]?
 
-    var selectedItem: VTBTabBarItemView? {
+    var selectedItem: TabBarItemView? {
         didSet {
             items?.forEach { item in
                 item.setState(.default)
@@ -33,7 +33,7 @@ final class TabBarView: BaseView {
         }
     }
 
-    func setItems(_ items: [VTBTabBarItemView]?) {
+    func setItems(_ items: [TabBarItemView]?) {
         self.items = items
 
         items?.forEach { currentItem in
@@ -90,7 +90,7 @@ final class TabBarView: BaseView {
 
     @objc private func itemTapHandler(_ tapGestureRecognizer: UITapGestureRecognizer) {
 
-        guard let tappedView = tapGestureRecognizer.view as? VTBTabBarItemView else {
+        guard let tappedView = tapGestureRecognizer.view as? TabBarItemView else {
             return
         }
 
