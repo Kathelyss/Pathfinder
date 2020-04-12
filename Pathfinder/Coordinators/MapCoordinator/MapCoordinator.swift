@@ -22,6 +22,7 @@ final class MapCoordinator: BaseCoordinator {
     // MARK: - Module
 
     private func showMapModule() {
-        router.setRootModule(moduleFactory.createMapModule())
+        let module = moduleFactory.createMapModule()
+        router.setRootModule(module)
     }
 }

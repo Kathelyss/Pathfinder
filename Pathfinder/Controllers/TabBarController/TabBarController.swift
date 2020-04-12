@@ -3,7 +3,6 @@ import UIKit
 protocol TabBarModule: Presentable {
 
     var onModuleLoaded: ParameterClosure<TabBarController>? { get set }
-    var onModuleAppeared: VoidBlock? { get set }
 
     func switchTab(to tabIndex: Int)
 }
@@ -19,7 +18,6 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
     // MARK: - TabBarModule
 
     var onModuleLoaded: ParameterClosure<TabBarController>?
-    var onModuleAppeared: VoidBlock?
 
     func switchTab(to tabIndex: Int) {
         selectedIndex = tabIndex
@@ -57,13 +55,6 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
         initializeView()
         tabBar.delegate = self
         onModuleLoaded?(self)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        onModuleAppeared?()
-        onModuleAppeared = nil
     }
 
     // MARK: - Initializable View
@@ -133,9 +124,6 @@ extension TabBarController: TabBarViewDelegate {
 // MARK: - Constants
 private extension Constants {
     static let tabBarHeight: CGFloat = 92
-}
-
-extension Constants {
     static let tabBarRevealedSafeArea = Constants.tabBarHeight
     static let tabBarPartiallyRevealedOffset = tabBarRevealedSafeArea * 0.7
     static let tabBarPartiallyRevealedSafeArea = Constants.tabBarRevealedSafeArea - Constants.tabBarPartiallyRevealedOffset
