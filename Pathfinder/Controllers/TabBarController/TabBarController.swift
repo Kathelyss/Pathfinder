@@ -123,7 +123,7 @@ extension TabBarController: TabBarViewDelegate {
 
 // MARK: - Constants
 private extension Constants {
-    static let tabBarHeight: CGFloat = 92
+    static let tabBarHeight: CGFloat = 80
     static let tabBarRevealedSafeArea = Constants.tabBarHeight
     static let tabBarPartiallyRevealedOffset = tabBarRevealedSafeArea * 0.7
     static let tabBarPartiallyRevealedSafeArea = Constants.tabBarRevealedSafeArea - Constants.tabBarPartiallyRevealedOffset

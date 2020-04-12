@@ -51,6 +51,12 @@
 		23707C132442A99900175FD9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C122442A99900175FD9 /* MapViewModel.swift */; };
 		23707C152442ABB100175FD9 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C142442ABB100175FD9 /* MapCoordinator.swift */; };
 		23707C182442AC0800175FD9 /* MapModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C172442AC0800175FD9 /* MapModuleFactory.swift */; };
+		23707C1B24437D1200175FD9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C1A24437D1200175FD9 /* InfoViewController.swift */; };
+		23707C1E24437DA200175FD9 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C1D24437DA200175FD9 /* InfoViewModel.swift */; };
+		23707C2024437DC100175FD9 /* ModuleFactory+InfoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C1F24437DC100175FD9 /* ModuleFactory+InfoModule.swift */; };
+		23707C2224437E2400175FD9 /* InfoModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2124437E2400175FD9 /* InfoModuleFactory.swift */; };
+		23707C2524437E3F00175FD9 /* InfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2424437E3F00175FD9 /* InfoCoordinator.swift */; };
+		23707C2724437FDA00175FD9 /* UIView+RoundedShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +107,12 @@
 		23707C122442A99900175FD9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		23707C142442ABB100175FD9 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		23707C172442AC0800175FD9 /* MapModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModuleFactory.swift; sourceTree = "<group>"; };
+		23707C1A24437D1200175FD9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		23707C1D24437DA200175FD9 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		23707C1F24437DC100175FD9 /* ModuleFactory+InfoModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModuleFactory+InfoModule.swift"; sourceTree = "<group>"; };
+		23707C2124437E2400175FD9 /* InfoModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModuleFactory.swift; sourceTree = "<group>"; };
+		23707C2424437E3F00175FD9 /* InfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCoordinator.swift; sourceTree = "<group>"; };
+		23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedShadow.swift"; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +169,7 @@
 				23707BF92442980200175FD9 /* NavigationController */,
 				23707BFA2442981200175FD9 /* TabBarController */,
 				23707C0D2442A88800175FD9 /* MapController */,
+				23707C1C24437D1600175FD9 /* InfoController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -207,6 +220,7 @@
 				23707BB92442867900175FD9 /* AppCoordinator */,
 				23707BF4244295D100175FD9 /* TabBarCoordinator */,
 				23707C162442ABE300175FD9 /* MapCoordinator */,
+				23707C2324437E2800175FD9 /* InfoCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -267,6 +281,7 @@
 				23707BD424428C9400175FD9 /* UIWindow+Level.swift */,
 				23707BB624427C7800175FD9 /* UIImage+Extensions.swift */,
 				23707BE624428F8700175FD9 /* UIViewController+Extensions.swift */,
+				23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +385,25 @@
 				23707BB424427C6A00175FD9 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		23707C1C24437D1600175FD9 /* InfoController */ = {
+			isa = PBXGroup;
+			children = (
+				23707C1F24437DC100175FD9 /* ModuleFactory+InfoModule.swift */,
+				23707C1A24437D1200175FD9 /* InfoViewController.swift */,
+				23707C1D24437DA200175FD9 /* InfoViewModel.swift */,
+			);
+			name = InfoController;
+			sourceTree = "<group>";
+		};
+		23707C2324437E2800175FD9 /* InfoCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				23707C2424437E3F00175FD9 /* InfoCoordinator.swift */,
+				23707C2124437E2400175FD9 /* InfoModuleFactory.swift */,
+			);
+			path = InfoCoordinator;
 			sourceTree = "<group>";
 		};
 		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
@@ -503,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23707C2724437FDA00175FD9 /* UIView+RoundedShadow.swift in Sources */,
 				23707BCB2442897B00175FD9 /* Instructor.swift in Sources */,
 				23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */,
 				23707BDD24428D6600175FD9 /* StackRoutable.swift in Sources */,
@@ -511,9 +546,14 @@
 				23707C182442AC0800175FD9 /* MapModuleFactory.swift in Sources */,
 				23707B992442775100175FD9 /* AppDelegate.swift in Sources */,
 				23707BF6244295F500175FD9 /* TabBarCoordinator.swift in Sources */,
+				23707C2224437E2400175FD9 /* InfoModuleFactory.swift in Sources */,
+				23707C2524437E3F00175FD9 /* InfoCoordinator.swift in Sources */,
 				23707BE724428F8700175FD9 /* UIViewController+Extensions.swift in Sources */,
 				23707BDF24428D8900175FD9 /* ModalRoutable.swift in Sources */,
+				23707C2024437DC100175FD9 /* ModuleFactory+InfoModule.swift in Sources */,
+				23707C1E24437DA200175FD9 /* InfoViewModel.swift in Sources */,
 				23707C152442ABB100175FD9 /* MapCoordinator.swift in Sources */,
+				23707C1B24437D1200175FD9 /* InfoViewController.swift in Sources */,
 				23707C112442A90C00175FD9 /* MapViewController.swift in Sources */,
 				23707BB724427C7800175FD9 /* UIImage+Extensions.swift in Sources */,
 				23707BFE2442997D00175FD9 /* ModuleFactory+TabBar.swift in Sources */,

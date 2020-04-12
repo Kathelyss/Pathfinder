@@ -2,6 +2,9 @@ import UIKit
 
 enum Constants {
 
+    /// 4 pt
+    static let tinyInset: CGFloat = 4
+
     /// 8 pt
     static let smallInset: CGFloat = 8
 

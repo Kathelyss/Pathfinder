@@ -27,15 +27,15 @@ final class TabBarItemView: BaseView {
         super.configureLayout()
 
         imageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(Constants.smallInset)
             make.centerX.equalToSuperview()
             make.width.equalTo(imageView.snp.height)
-            make.top.equalToSuperview().inset(17)
         }
 
         titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(Constants.tinyInset)
             make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(7)
-            make.bottom.equalToSuperview().inset(14)
+            make.bottom.equalToSuperview().inset(Constants.tinyInset)
         }
     }
 
@@ -75,7 +75,7 @@ extension TabBarItemView {
                 return .white
 
             case .default:
-                return .green
+                return .systemGreen
             }
         }
 
@@ -85,14 +85,14 @@ extension TabBarItemView {
                 return .white
 
             case .default:
-                return .green
+                return .systemGreen
             }
         }
 
         var backgroundColor: UIColor {
             switch self {
             case .selected:
-                return .green
+                return UIColor.systemGreen.withAlphaComponent(0.8)
 
             case .default:
                 return .white

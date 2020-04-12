@@ -34,6 +34,11 @@ final class TabBarCoordinator: BaseCoordinator {
         let coordinator: Coordinatable
 
         switch item {
+        case .info:
+            coordinator = InfoCoordinator(router: router,
+                                          moduleFactory: moduleFactory,
+                                          mainStorage: storage)
+
         case .map:
             coordinator = MapCoordinator(router: router,
                                          moduleFactory: moduleFactory,

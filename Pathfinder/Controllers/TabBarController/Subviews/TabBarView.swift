@@ -80,10 +80,7 @@ final class TabBarView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-//        addRoundedShadow(shadowColor: .vtbDarkBlue,
-//                         shadowOpacity: 0.1,
-//                         shadowOffset: CGSize(width: 0, height: 22),
-//                         shadowRadius: 22)
+        addRoundedShadow(shadowColor: .systemGreen)
     }
 
     // MARK: - Private functions

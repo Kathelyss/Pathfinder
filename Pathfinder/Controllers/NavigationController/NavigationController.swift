@@ -63,10 +63,10 @@ final class NavigationController: UINavigationController, InitializableView, UIG
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
 
-//        navigationBar.titleTextAttributes = [
-//            .foregroundColor: UIColor.vtbDarkBlue,
-//            .font: UIFont.rubikRegularFont(ofSize: 16)
-//        ]
+        navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .medium)
+        ]
 
         view.backgroundColor = .white
     }

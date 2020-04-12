@@ -4,11 +4,15 @@ protocol MapModule: Presentable {
 
 }
 
-final class MapViewController: UIViewController, MapModule {
+final class MapViewController: UIViewController, InitializableView, MapModule {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .yellow
+        initializeView()
+    }
+
+    func localize() {
+        navigationItem.title = "Карта склада"
     }
 }
