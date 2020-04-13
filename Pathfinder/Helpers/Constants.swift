@@ -14,6 +14,12 @@ enum Constants {
     /// 32 pt
     static let bigInset: CGFloat = 32
 
-    /// 16
+    /// 64 pt
+    static let hugeInset: CGFloat = 64
+
+    /// 16 pt
     static let cornerRadius: CGFloat = 16
+
+    /// 1 pt
+    static let separatorHeight: CGFloat = 1
 }

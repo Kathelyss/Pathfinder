@@ -1,6 +1,7 @@
 extension ModuleFactory {
 
     func createGeneralModule() -> GeneralModule {
-        GeneralViewController()
+        let viewModel = GeneralViewModel()
+        return GeneralViewController(viewModel: viewModel)
     }
 }

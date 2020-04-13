@@ -4,15 +4,47 @@ protocol GeneralModule: Presentable {
 
 }
 
-final class GeneralViewController: UIViewController, InitializableView, GeneralModule {
+final class GeneralViewController: BaseConfigurableController<GeneralViewModel>, GeneralModule {
 
+    private let separatorView = BaseSeparatorView()
+    private let emptyView = EmptyView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initializeView()
+        initialLoadView()
     }
 
-    func localize() {
-        navigationItem.title = "Основной экран"
+    override func addViews() {
+        super.addViews()
+
+        view.addSubview(separatorView)
+        view.addSubview(emptyView)
+    }
+
+    override func configureLayout() {
+        super.configureLayout()
+
+        separatorView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(actualLayoutGuide)
+            make.height.equalTo(Constants.separatorHeight)
+        }
+
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(actualLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+
+    override func configureAppearance() {
+        super.configureAppearance()
+
+        emptyView.configure(with: .general)
+    }
+
+    override func localize() {
+        super.localize()
+
+        navigationItem.title = "Данные"
     }
 }

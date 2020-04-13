@@ -1,6 +1,7 @@
 extension ModuleFactory {
 
     func createPathModule() -> PathModule {
-        PathViewController()
+        let viewModel = PathViewModel()
+        return PathViewController(viewModel: viewModel)
     }
 }

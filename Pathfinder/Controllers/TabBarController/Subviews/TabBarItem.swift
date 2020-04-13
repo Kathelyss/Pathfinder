@@ -15,13 +15,13 @@ private extension TabBarItem {
     var title: String {
         switch self {
         case .general:
-            return "Инфо"
+            return "Данные"
 
         case .waybill:
             return "Накладная"
 
         case .path:
-            return "Карта"
+            return "Маршрут"
         }
     }
 

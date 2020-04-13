@@ -75,3 +75,19 @@ extension UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - Actual layout guide
+
+extension UIViewController {
+
+    var actualLayoutGuide: UILayoutGuide {
+        view.safeAreaLayoutGuide
+    }
+}
+
+extension UIView {
+
+    var actualLayoutGuide: UILayoutGuide {
+        safeAreaLayoutGuide
+    }
+}

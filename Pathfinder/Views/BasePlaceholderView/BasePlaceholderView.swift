@@ -64,15 +64,15 @@ public extension BasePlaceholderView {
     ///
     /// - Parameter viewModel: Placeholder view visual attributes without layout.
     func baseConfigure(with viewModel: BasePlaceholderViewModel) {
-//        titleLabel.configure(with: viewModel.title)
-//
-//        descriptionLabel.isHidden = !viewModel.hasDescription
-//        viewModel.description?.configure(view: descriptionLabel)
-//
-//        centerImageView.isHidden = !viewModel.hasCenterImage
-//        centerImageView.image = viewModel.centerImage
-//
-//        button.isHidden = !viewModel.hasButton
-//        viewModel.buttonTitle?.configure(view: button)
+        titleLabel.configure(with: viewModel.title)
+
+        descriptionLabel.isHidden = !viewModel.hasDescription
+        viewModel.description?.configure(view: descriptionLabel)
+
+        centerImageView.isHidden = !viewModel.hasCenterImage
+        centerImageView.image = viewModel.centerImage
+
+        button.isHidden = !viewModel.hasButton
+        viewModel.buttonTitle?.configure(view: button)
     }
 }

@@ -6,4 +6,7 @@ use_frameworks!
 
 target 'Pathfinder' do
 	pod 'SnapKit'
+	pod 'TableKit'
+	pod 'RxSwift'
+	pod 'RxCocoa'
 end

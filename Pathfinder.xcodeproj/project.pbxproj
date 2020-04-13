@@ -65,6 +65,16 @@
 		23707C352443A3D800175FD9 /* BasePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C342443A3D800175FD9 /* BasePlaceholderView.swift */; };
 		23707C372443A46400175FD9 /* BasePlaceholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C362443A46400175FD9 /* BasePlaceholderViewModel.swift */; };
 		23707C3A2443A68000175FD9 /* ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C392443A68000175FD9 /* ViewTextConfigurable.swift */; };
+		23707C3C2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C3B2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift */; };
+		23707C3E2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C3D2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift */; };
+		23707C402443DDA300175FD9 /* ViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C3F2443DDA300175FD9 /* ViewText.swift */; };
+		23707C422443DDF700175FD9 /* BaseTextAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C412443DDF700175FD9 /* BaseTextAttributes.swift */; };
+		23707C442443DE8600175FD9 /* ConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C432443DE8600175FD9 /* ConfigurableController.swift */; };
+		23707C462443DF2000175FD9 /* BaseConfigurableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C452443DF2000175FD9 /* BaseConfigurableController.swift */; };
+		23707C4C2443E37D00175FD9 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C4B2443E37D00175FD9 /* EmptyView.swift */; };
+		23707C4E2443EB0800175FD9 /* BaseSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C4D2443EB0800175FD9 /* BaseSeparatorView.swift */; };
+		23707C502443EC1400175FD9 /* EmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C4F2443EC1400175FD9 /* EmptyViewModel.swift */; };
+		23707C522443ED3A00175FD9 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C512443ED3A00175FD9 /* ConfigurableView.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +139,16 @@
 		23707C342443A3D800175FD9 /* BasePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePlaceholderView.swift; sourceTree = "<group>"; };
 		23707C362443A46400175FD9 /* BasePlaceholderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePlaceholderViewModel.swift; sourceTree = "<group>"; };
 		23707C392443A68000175FD9 /* ViewTextConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTextConfigurable.swift; sourceTree = "<group>"; };
+		23707C3B2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+ViewTextConfigurable.swift"; sourceTree = "<group>"; };
+		23707C3D2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+ViewTextConfigurable.swift"; sourceTree = "<group>"; };
+		23707C3F2443DDA300175FD9 /* ViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewText.swift; sourceTree = "<group>"; };
+		23707C412443DDF700175FD9 /* BaseTextAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextAttributes.swift; sourceTree = "<group>"; };
+		23707C432443DE8600175FD9 /* ConfigurableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableController.swift; sourceTree = "<group>"; };
+		23707C452443DF2000175FD9 /* BaseConfigurableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfigurableController.swift; sourceTree = "<group>"; };
+		23707C4B2443E37D00175FD9 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		23707C4D2443EB0800175FD9 /* BaseSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSeparatorView.swift; sourceTree = "<group>"; };
+		23707C4F2443EC1400175FD9 /* EmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewModel.swift; sourceTree = "<group>"; };
+		23707C512443ED3A00175FD9 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +320,8 @@
 				23707BB624427C7800175FD9 /* UIImage+Extensions.swift */,
 				23707BE624428F8700175FD9 /* UIViewController+Extensions.swift */,
 				23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */,
+				23707C3B2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift */,
+				23707C3D2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,7 +348,10 @@
 			isa = PBXGroup;
 			children = (
 				23707BE424428EE300175FD9 /* InitializableView.swift */,
+				23707C432443DE8600175FD9 /* ConfigurableController.swift */,
+				23707C452443DF2000175FD9 /* BaseConfigurableController.swift */,
 				23707C392443A68000175FD9 /* ViewTextConfigurable.swift */,
+				23707C512443ED3A00175FD9 /* ConfigurableView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -374,7 +399,9 @@
 			isa = PBXGroup;
 			children = (
 				23707C0424429BEE00175FD9 /* BaseView.swift */,
+				23707C4D2443EB0800175FD9 /* BaseSeparatorView.swift */,
 				23707C382443A58D00175FD9 /* BasePlaceholderView */,
+				23707C532443EDF000175FD9 /* EmptyView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,8 +428,10 @@
 		23707C192442AFA600175FD9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				23707BC1244287D600175FD9 /* Block.swift */,
 				23707BB424427C6A00175FD9 /* Constants.swift */,
+				23707BC1244287D600175FD9 /* Block.swift */,
+				23707C3F2443DDA300175FD9 /* ViewText.swift */,
+				23707C412443DDF700175FD9 /* BaseTextAttributes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -452,6 +481,15 @@
 				23707C362443A46400175FD9 /* BasePlaceholderViewModel.swift */,
 			);
 			path = BasePlaceholderView;
+			sourceTree = "<group>";
+		};
+		23707C532443EDF000175FD9 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				23707C4B2443E37D00175FD9 /* EmptyView.swift */,
+				23707C4F2443EC1400175FD9 /* EmptyViewModel.swift */,
+			);
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
@@ -594,6 +632,7 @@
 				23707C182442AC0800175FD9 /* PathModuleFactory.swift in Sources */,
 				23707B992442775100175FD9 /* AppDelegate.swift in Sources */,
 				23707BF6244295F500175FD9 /* TabBarCoordinator.swift in Sources */,
+				23707C442443DE8600175FD9 /* ConfigurableController.swift in Sources */,
 				23707C2224437E2400175FD9 /* GeneralModuleFactory.swift in Sources */,
 				23707C2524437E3F00175FD9 /* GeneralCoordinator.swift in Sources */,
 				23707BE724428F8700175FD9 /* UIViewController+Extensions.swift in Sources */,
@@ -602,8 +641,11 @@
 				23707C1E24437DA200175FD9 /* GeneralViewModel.swift in Sources */,
 				23707C152442ABB100175FD9 /* PathCoordinator.swift in Sources */,
 				23707C3024439B9500175FD9 /* WaybillCoordinator.swift in Sources */,
+				23707C462443DF2000175FD9 /* BaseConfigurableController.swift in Sources */,
+				23707C4C2443E37D00175FD9 /* EmptyView.swift in Sources */,
 				23707C3324439BD300175FD9 /* WaybillModuleFactory.swift in Sources */,
 				23707C1B24437D1200175FD9 /* GeneralViewController.swift in Sources */,
+				23707C402443DDA300175FD9 /* ViewText.swift in Sources */,
 				23707C352443A3D800175FD9 /* BasePlaceholderView.swift in Sources */,
 				23707C112442A90C00175FD9 /* PathViewController.swift in Sources */,
 				23707BB724427C7800175FD9 /* UIImage+Extensions.swift in Sources */,
@@ -618,9 +660,11 @@
 				23707C3A2443A68000175FD9 /* ViewTextConfigurable.swift in Sources */,
 				23707BFC2442987600175FD9 /* TabBarController.swift in Sources */,
 				23707BEF244293F200175FD9 /* ApplicationCoordinatorInstructor.swift in Sources */,
+				23707C502443EC1400175FD9 /* EmptyViewModel.swift in Sources */,
 				23707BD524428C9400175FD9 /* UIWindow+Level.swift in Sources */,
 				23707BD324428BF500175FD9 /* AppRouter.swift in Sources */,
 				23707BD824428CF700175FD9 /* Router.swift in Sources */,
+				23707C3E2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift in Sources */,
 				23707BBD2442871300175FD9 /* BaseCoordinator.swift in Sources */,
 				23707BC02442878F00175FD9 /* Coordinatable.swift in Sources */,
 				23707BB524427C6A00175FD9 /* Constants.swift in Sources */,
@@ -629,12 +673,16 @@
 				23707BED2442932C00175FD9 /* ApplicationCoordinatorInterface.swift in Sources */,
 				23707BE524428EE300175FD9 /* InitializableView.swift in Sources */,
 				23707BF3244294D400175FD9 /* ApplicationState.swift in Sources */,
+				23707C3C2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift in Sources */,
+				23707C522443ED3A00175FD9 /* ConfigurableView.swift in Sources */,
 				23707BBB2442869F00175FD9 /* ApplicationCoordinator.swift in Sources */,
 				23707C292443943C00175FD9 /* WaybillViewController.swift in Sources */,
 				23707C0324429B7B00175FD9 /* TabBarItemView.swift in Sources */,
+				23707C422443DDF700175FD9 /* BaseTextAttributes.swift in Sources */,
 				23707BCD2442899900175FD9 /* CoordinatorInstructor.swift in Sources */,
 				23707BCF244289D700175FD9 /* CoordinatorFactory.swift in Sources */,
 				23707C372443A46400175FD9 /* BasePlaceholderViewModel.swift in Sources */,
+				23707C4E2443EB0800175FD9 /* BaseSeparatorView.swift in Sources */,
 				23707C0524429BEE00175FD9 /* BaseView.swift in Sources */,
 				23707C2C2443948400175FD9 /* ModuleFactory+WaybillModule.swift in Sources */,
 				23707BDB24428D5200175FD9 /* AppRoutable.swift in Sources */,
