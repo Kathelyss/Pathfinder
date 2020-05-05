@@ -22,4 +22,7 @@ enum Constants {
 
     /// 1 pt
     static let separatorHeight: CGFloat = 1
+
+    /// 80 pt
+    static let tabbarHeight: CGFloat = 80
 }

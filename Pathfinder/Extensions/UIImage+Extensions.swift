@@ -2,6 +2,16 @@ import UIKit
 
 extension UIImage {
 
+    // MARK: - Plan
+
+    static var planImage: UIImage {
+        #imageLiteral(resourceName: "plan")
+    }
+    
+    static var gridlessPlanImage: UIImage {
+        #imageLiteral(resourceName: "gridlessPlan")
+    }
+
     // MARK: - Navigation
 
     static var forwardIcon: UIImage {

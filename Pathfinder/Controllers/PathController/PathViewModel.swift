@@ -2,7 +2,6 @@ import UIKit
 
 final class PathViewModel {
 
-    let mapImages: [UIImage] = [#imageLiteral(resourceName: "floor1"), #imageLiteral(resourceName: "floor2"), #imageLiteral(resourceName: "floor5")]
     var graph: [Floor] = []
     var allNodes: [Node] = []
     var path: [Node] = []

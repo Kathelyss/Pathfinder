@@ -39,7 +39,7 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
     override func configureAppearance() {
         super.configureAppearance()
 
-        emptyView.configure(with: .waybill)
+        emptyView.configure(with: .noWaybill)
     }
 
     override func localize() {

@@ -31,14 +31,11 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
         if !isPathViewAdded {
             pathView = PathView(frame: mapView.bounds)
-            pathView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            pathView.backgroundColor = .clear
             mapView.addSubview(pathView)
             isPathViewAdded = true
 
             pathView.allPathNodes = viewModel.path
-            if let floor = viewModel.path.first?.floor {
-                setSourceNodeFloor(sourceNodeFloor: floor - 1)
-            }
         }
     }
     
@@ -46,31 +43,40 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         super.addViews()
 
         view.addSubview(separatorView)
+        view.addSubview(mapView)
         view.addSubview(emptyView)
     }
 
     override func configureLayout() {
         super.configureLayout()
 
-        separatorView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(actualLayoutGuide)
-            make.height.equalTo(Constants.separatorHeight)
+        separatorView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(actualLayoutGuide)
+            $0.height.equalTo(Constants.separatorHeight)
         }
 
-        emptyView.snp.makeConstraints { make in
-            make.top.equalTo(actualLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+
+        mapView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide).inset(Constants.defaultInset)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
         }
     }
 
     override func configureAppearance() {
         super.configureAppearance()
 
-        emptyView.configure(with: .path)
+        emptyView.configure(with: .noPath)
 
-        mapView.image = viewModel.mapImages[0]
+        mapView.contentMode = .scaleAspectFit
+        mapView.image = .gridlessPlanImage
         setupScrollView()
         clearButton.isHidden = true
+        emptyView.isHidden = !mapView.isHidden
     }
     
     override func localize() {
@@ -90,10 +96,7 @@ extension PathViewController {
             viewModel.path = path
             pathView.allPathNodes = viewModel.path
             clearButton.isHidden = false
-            if let floor = viewModel.path.first?.floor {
-                setSourceNodeFloor(sourceNodeFloor: floor - 1)
-                setPins()
-            }
+            setPins()
         } catch PathfinderError.noPathFound {
             showErrorAlert(message: "Невозможно построить маршрут")
         } catch PathfinderError.noSourceNode {
@@ -138,12 +141,6 @@ extension PathViewController {
         } else {
             pathView.endView.isHidden = true
         }
-    }
-
-    func setSourceNodeFloor(sourceNodeFloor: Int) {
-        mapView.image = viewModel.mapImages[sourceNodeFloor]
-        pathView.frame = mapView.bounds
-        pathView.currentFloorNumber = sourceNodeFloor
     }
 
     func setupScrollView() {

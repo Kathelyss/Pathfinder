@@ -39,7 +39,7 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
     override func configureAppearance() {
         super.configureAppearance()
 
-        emptyView.configure(with: .general)
+        emptyView.configure(with: .noGeneralInfo)
     }
 
     override func localize() {
