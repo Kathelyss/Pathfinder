@@ -6,7 +6,6 @@ protocol GeneralModule: Presentable {
 
 final class GeneralViewController: BaseConfigurableController<GeneralViewModel>, GeneralModule {
 
-    private let separatorView = BaseSeparatorView()
     private let emptyView = EmptyView()
     
     override func viewDidLoad() {
@@ -18,17 +17,11 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
     override func addViews() {
         super.addViews()
 
-        view.addSubview(separatorView)
         view.addSubview(emptyView)
     }
 
     override func configureLayout() {
         super.configureLayout()
-
-        separatorView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(actualLayoutGuide)
-            make.height.equalTo(Constants.separatorHeight)
-        }
 
         emptyView.snp.makeConstraints { make in
             make.top.equalTo(actualLayoutGuide)
@@ -48,3 +41,9 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
         navigationItem.title = "Данные"
     }
 }
+
+/*
+ Обновить наличие - запрос /getStorageInfo
+ Запросить накладную - запрос /getWaybill-> результат отображается таблицей под кнопками
+Очистить задание
+ */

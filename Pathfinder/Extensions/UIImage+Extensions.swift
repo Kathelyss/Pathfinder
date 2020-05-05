@@ -4,11 +4,19 @@ extension UIImage {
 
     // MARK: - Plan
 
-    static var planImage: UIImage {
+    static var smallPlanImage: UIImage {
+        #imageLiteral(resourceName: "v4")
+    }
+
+    static var gridSmallPlanImage: UIImage {
+        #imageLiteral(resourceName: "v4_grid")
+    }
+
+    static var gridMediumPlanImage: UIImage {
         #imageLiteral(resourceName: "plan")
     }
-    
-    static var gridlessPlanImage: UIImage {
+
+    static var mediumPlanImage: UIImage {
         #imageLiteral(resourceName: "gridlessPlan")
     }
 

@@ -67,7 +67,7 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
     func configureLayout() {
 
         tabBar.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(8)
+            make.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
             make.bottom.equalToSuperview()
             make.height.equalTo(Constants.tabbarHeight)
         }

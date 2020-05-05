@@ -11,6 +11,9 @@ enum Constants {
     /// 16 pt
     static let defaultInset: CGFloat = 16
 
+    /// 20 pt
+    static let mediumInset: CGFloat = 20
+
     /// 32 pt
     static let bigInset: CGFloat = 32
 

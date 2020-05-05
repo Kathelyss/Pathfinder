@@ -6,17 +6,15 @@ protocol PathModule: Presentable {
 
 final class PathViewController: BaseConfigurableController<PathViewModel>, PathModule {
 
-    private let separatorView = BaseSeparatorView()
     private let emptyView = EmptyView()
+    private var planImageView = UIImageView()
+    private var upperInfoView = UpperInfoView()
 
     private var scrollView = UIScrollView()
-    private var mapView = UIImageView()
-    private var searchButton = UIButton()
     private var clearButton = UIButton()
 
     var pathView: PathView!
     var isPathViewAdded = false
-    var lastTappedButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,59 +28,104 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         scrollViewDidZoom(scrollView)
 
         if !isPathViewAdded {
-            pathView = PathView(frame: mapView.bounds)
+            pathView = PathView(frame: planImageView.bounds)
             pathView.backgroundColor = .clear
-            mapView.addSubview(pathView)
+            planImageView.addSubview(pathView)
             isPathViewAdded = true
 
             pathView.allPathNodes = viewModel.path
         }
+
+        showSuccessView()
     }
     
     override func addViews() {
         super.addViews()
 
-        view.addSubview(separatorView)
-        view.addSubview(mapView)
+        view.addSubview(planImageView)
         view.addSubview(emptyView)
+        view.addSubview(upperInfoView)
     }
 
     override func configureLayout() {
         super.configureLayout()
-
-        separatorView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(actualLayoutGuide)
-            $0.height.equalTo(Constants.separatorHeight)
-        }
 
         emptyView.snp.makeConstraints {
             $0.top.equalTo(actualLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
-        mapView.snp.makeConstraints {
+        planImageView.snp.makeConstraints {
             $0.top.equalTo(actualLayoutGuide).inset(Constants.defaultInset)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
             $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
+        }
+
+        upperInfoView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide).inset(Constants.smallInset)
+            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
+            $0.height.lessThanOrEqualTo(80)
         }
     }
 
     override func configureAppearance() {
         super.configureAppearance()
 
-        emptyView.configure(with: .noPath)
-
-        mapView.contentMode = .scaleAspectFit
-        mapView.image = .gridlessPlanImage
+        planImageView.contentMode = .scaleAspectFit
+        planImageView.image = .smallPlanImage
         setupScrollView()
         clearButton.isHidden = true
-        emptyView.isHidden = !mapView.isHidden
+        emptyView.isHidden = !planImageView.isHidden
+//        upperInfoView.isHidden = !isPathViewAdded
     }
-    
+
     override func localize() {
         super.localize()
 
+        emptyView.configure(with: .noPath)
+        upperInfoView.configure(with: .mockInfo)
         navigationItem.title = "Маршрут"
+    }
+}
+
+// MARK: - Alerts
+
+private extension PathViewController {
+
+    func showSuccessView() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+
+        let titleFont = [NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 16, weight: .bold)]
+        let messageFont = [NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .medium)]
+
+        let titleAttrString = NSMutableAttributedString(string: "Корзина собрана", attributes: titleFont)
+        let messageAttrString = NSMutableAttributedString(string: "Комплектация товара завершена.\n\nОчистить маршрут?",
+                                                          attributes: messageFont)
+
+        alert.setValue(titleAttrString, forKey: "attributedTitle")
+        alert.setValue(messageAttrString, forKey: "attributedMessage")
+
+        alert.addAction(UIAlertAction(title: "Очистить", style: .default, handler: nil))
+        // handler: clearRoute + /updateStorageInfo
+
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = view
+            popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.maxY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = [.down]
+        }
+
+        present(alert, animated: true)
+    }
+
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Oшибка", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ОК", style: .cancel, handler: nil))
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -99,10 +142,6 @@ extension PathViewController {
             setPins()
         } catch PathfinderError.noPathFound {
             showErrorAlert(message: "Невозможно построить маршрут")
-        } catch PathfinderError.noSourceNode {
-            showErrorAlert(message: "Пункт отправления не найден.\nПроверьте номер помещения!")
-        } catch PathfinderError.noDestinationNode {
-            showErrorAlert(message: "Пункт назначения не найден.\nПроверьте номер помещения!")
         } catch {
             showErrorAlert(message: "Что-то пошло не так")
         }
@@ -111,18 +150,8 @@ extension PathViewController {
     func tapClearRouteButton(_ sender: UIButton) {
         viewModel.path.removeAll()
         pathView.allPathNodes = viewModel.path
-        pathView.startView.isHidden = true
-        pathView.endView.isHidden = true
-        clearButton.isHidden = true
-    }
-
-    func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Oшибка", message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
-        alert.addAction(cancel)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.present(alert, animated: true, completion: nil)
+        [pathView.startView, pathView.endView, clearButton].forEach {
+            $0.isHidden = true
         }
     }
 
@@ -146,15 +175,15 @@ extension PathViewController {
     func setupScrollView() {
         scrollView.minimumZoomScale = 0.65
         scrollView.zoomScale = scrollView.minimumZoomScale
-        scrollView.contentSize = mapView.frame.size
+        scrollView.contentSize = planImageView.frame.size
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return mapView
+        return planImageView
     }
 
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let imageViewSize = mapView.frame.size
+        let imageViewSize = planImageView.frame.size
         let scrollViewSize = scrollView.bounds.size
         let verticalPadding = imageViewSize.height < scrollViewSize.height ?
             (scrollViewSize.height - imageViewSize.height) / 2 : 0

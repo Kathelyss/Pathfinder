@@ -61,11 +61,10 @@ final class NavigationController: UINavigationController, InitializableView, UIG
 
     func configureAppearance() {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
 
         navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .medium)
+            .foregroundColor: UIColor.systemBlue,
+            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .bold)
         ]
 
         view.backgroundColor = .white

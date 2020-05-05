@@ -60,7 +60,7 @@ final class TabBarView: BaseView {
 
         roundedContainer.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-            make.bottom.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(Constants.mediumInset)
         }
     }
 
@@ -82,7 +82,7 @@ final class TabBarView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        addRoundedShadow(shadowColor: .systemGreen)
+        addRoundedShadow(shadowColor: .systemBlue)
     }
 
     // MARK: - Private functions
