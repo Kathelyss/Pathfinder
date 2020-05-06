@@ -23,6 +23,17 @@ final class WaybillCoordinator: BaseCoordinator {
 
     private func showWaybillModule() {
         let module = moduleFactory.createWaybillModule()
+
+        module.onItemTap = { [weak self] itemCoordinates in
+            self?.showPathModule(itemCoordinates)
+        }
+
         router.setRootModule(module)
+    }
+
+    private func showPathModule(_ pinCoordinates: Int) {
+        // открывается карта с отметкой товара (show path module с пином по координатам товара)
+        let module = moduleFactory.createPathModule()
+        router.pushModule(module, animated: true, hideNavBar: false)
     }
 }

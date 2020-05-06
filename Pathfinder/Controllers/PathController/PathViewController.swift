@@ -35,8 +35,6 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
             pathView.allPathNodes = viewModel.path
         }
-
-        showSuccessView()
     }
     
     override func addViews() {
@@ -71,12 +69,13 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     override func configureAppearance() {
         super.configureAppearance()
 
+        view.backgroundColor = .white
         planImageView.contentMode = .scaleAspectFit
         planImageView.image = .smallPlanImage
         setupScrollView()
         clearButton.isHidden = true
         emptyView.isHidden = !planImageView.isHidden
-//        upperInfoView.isHidden = !isPathViewAdded
+        upperInfoView.isHidden = !isPathViewAdded
     }
 
     override func localize() {
@@ -86,46 +85,17 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         upperInfoView.configure(with: .mockInfo)
         navigationItem.title = "Маршрут"
     }
-}
 
-// MARK: - Alerts
-
-private extension PathViewController {
-
-    func showSuccessView() {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-
-        let titleFont = [NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 16, weight: .bold)]
-        let messageFont = [NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 14, weight: .medium)]
-
-        let titleAttrString = NSMutableAttributedString(string: "Корзина собрана", attributes: titleFont)
-        let messageAttrString = NSMutableAttributedString(string: "Комплектация товара завершена.\n\nОчистить маршрут?",
-                                                          attributes: messageFont)
-
-        alert.setValue(titleAttrString, forKey: "attributedTitle")
-        alert.setValue(messageAttrString, forKey: "attributedMessage")
-
-        alert.addAction(UIAlertAction(title: "Очистить", style: .default, handler: nil))
-        // handler: clearRoute + /updateStorageInfo
-
-        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+    private func presentSuccessfullResultAlert() {
+        // MOCK: add handler: clearRoute + /updateStorageInfo
+        let alert = UIAlertController.successfullResultActionSheet()
 
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = view
             popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.maxY, width: 0, height: 0)
             popoverController.permittedArrowDirections = [.down]
         }
-
         present(alert, animated: true)
-    }
-
-    func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Oшибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ОК", style: .cancel, handler: nil))
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.present(alert, animated: true, completion: nil)
-        }
     }
 }
 
@@ -141,9 +111,9 @@ extension PathViewController {
             clearButton.isHidden = false
             setPins()
         } catch PathfinderError.noPathFound {
-            showErrorAlert(message: "Невозможно построить маршрут")
+            present(UIAlertController.errorAlert(message: "Невозможно построить маршрут"), animated: true)
         } catch {
-            showErrorAlert(message: "Что-то пошло не так")
+            present(UIAlertController.errorAlert(message: "Что-то пошло не так"), animated: true)
         }
     }
 

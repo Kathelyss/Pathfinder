@@ -1,13 +1,15 @@
 import UIKit
 
 protocol WaybillModule: Presentable {
-
+    var onItemTap: ParameterClosure<Int>? { get set }
 }
 
 final class WaybillViewController: BaseConfigurableController<WaybillViewModel>, WaybillModule {
 
     private let emptyView = EmptyView()
     private let tableView = UITableView()
+
+    var onItemTap: ParameterClosure<Int>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,6 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
 
         tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.reuseIdentifier)
         tableView.alwaysBounceVertical = true
-        tableView.allowsSelection = false
     }
 }
 
@@ -65,7 +66,8 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
 
 extension WaybillViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // открывается карта с отметкой товара (show path module с пином по координатам товара)
+        // MOCK: передать координаты item'a
+        onItemTap?(1)
     }
 }
 

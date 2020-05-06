@@ -85,6 +85,7 @@
 		23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF024622B1C00572797 /* RequestButtonsView.swift */; };
 		23BE9EF3246240FE00572797 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF2246240FE00572797 /* ItemCell.swift */; };
 		23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF52462429300572797 /* ItemCellViewModel.swift */; };
+		23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +170,7 @@
 		23BE9EF024622B1C00572797 /* RequestButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButtonsView.swift; sourceTree = "<group>"; };
 		23BE9EF2246240FE00572797 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		23BE9EF52462429300572797 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				23707C2624437FDA00175FD9 /* UIView+RoundedShadow.swift */,
 				23707C3B2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift */,
 				23707C3D2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift */,
+				23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				23BE9EE824605BAC00572797 /* ACO.swift in Sources */,
 				23707C3024439B9500175FD9 /* WaybillCoordinator.swift in Sources */,
 				23707C462443DF2000175FD9 /* BaseConfigurableController.swift in Sources */,
+				23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */,
 				23707C4C2443E37D00175FD9 /* EmptyView.swift in Sources */,
 				23707C3324439BD300175FD9 /* WaybillModuleFactory.swift in Sources */,
 				23707C1B24437D1200175FD9 /* GeneralViewController.swift in Sources */,
