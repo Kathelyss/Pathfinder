@@ -22,7 +22,7 @@ final class PathCoordinator: BaseCoordinator {
     // MARK: - Module
 
     private func showPathModule() {
-        let module = moduleFactory.createPathModule()
+        let module = moduleFactory.createPathModule(title: "Маршрут")
         router.setRootModule(module)
     }
 }

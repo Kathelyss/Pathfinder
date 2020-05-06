@@ -1,7 +1,7 @@
 import UIKit
 
 protocol WaybillModule: Presentable {
-    var onItemTap: ParameterClosure<Coordinate>? { get set }
+    var onItemTap: ParameterClosure<WaybillItem>? { get set }
     var onStorageClear: VoidBlock? { get set }
 }
 
@@ -10,7 +10,7 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
     private let emptyView = EmptyView()
     private let tableView = UITableView()
 
-    var onItemTap: ParameterClosure<Coordinate>?
+    var onItemTap: ParameterClosure<WaybillItem>?
     var onStorageClear: VoidBlock?
 
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
 
 extension WaybillViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onItemTap?(viewModel.orderedItems[indexPath.row].location.coordinate)
+        onItemTap?(viewModel.orderedItems[indexPath.row])
     }
 }
 

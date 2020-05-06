@@ -11,7 +11,7 @@ final class WaybillViewModel {
 
         orderedItems.enumerated().forEach { (index, item) in
             let title = "\(index + 1). \(item.article.name) - \(item.quantity) штук"
-            let subtitle = "Стеллаж \(item.location.rackNumber), позиция \(item.location.position), полка \(item.location.shelfNumber)"
+            let subtitle = "\tСтеллаж \(item.location.rackNumber), позиция \(item.location.position), полка \(item.location.shelfNumber)"
             cellModels.append(ItemCellViewModel(title: title, subtitle: subtitle, isIconHidden: false))
         }
     }

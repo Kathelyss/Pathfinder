@@ -68,6 +68,7 @@ final class NavigationController: UINavigationController, InitializableView, UIG
         ]
 
         view.backgroundColor = .white
+        navigationBar.tintColor = .black
     }
 
     // MARK: - Private

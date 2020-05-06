@@ -2,11 +2,14 @@ import UIKit
 
 final class PathViewModel {
 
+    var navigationTitle: String = ""
+
     var graph: [Floor] = []
     var allNodes: [Node] = []
     var path: [Node] = []
 
-    init() {
+    init(title: String) {
+        navigationTitle = title
         graph = createGraph()
         allNodes = Array(graph.compactMap({ $0.nodes }).joined())
     }

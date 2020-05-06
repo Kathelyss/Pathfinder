@@ -24,16 +24,16 @@ final class WaybillCoordinator: BaseCoordinator {
     private func showWaybillModule() {
         let module = moduleFactory.createWaybillModule()
 
-        module.onItemTap = { [weak self] itemCoordinates in
-            self?.showPathModule(itemCoordinates)
+        module.onItemTap = { [weak self] item in
+            self?.showPathModule(item)
         }
 
         router.setRootModule(module)
     }
 
-    private func showPathModule(_ pinCoordinates: Coordinate) {
+    private func showPathModule(_ item: WaybillItem) {
         // MOCK: добавить отметку товара по координатам
-        let module = moduleFactory.createPathModule()
+        let module = moduleFactory.createPathModule(title: item.article.name)
         router.pushModule(module, animated: true, hideNavBar: false)
     }
 }

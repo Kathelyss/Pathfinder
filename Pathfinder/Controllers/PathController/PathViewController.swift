@@ -83,7 +83,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
         emptyView.configure(with: .noPath)
         upperInfoView.configure(with: .mockInfo)
-        navigationItem.title = "Маршрут"
+        navigationItem.title = viewModel.navigationTitle
     }
 
     private func presentSuccessfullResultAlert() {

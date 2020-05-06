@@ -2,5 +2,5 @@ import Foundation
 
 protocol PathModuleFactory {
 
-    func createPathModule() -> PathModule
+    func createPathModule(title: String) -> PathModule
 }

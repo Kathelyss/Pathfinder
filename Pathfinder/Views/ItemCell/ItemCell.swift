@@ -41,7 +41,7 @@ final class ItemCell: UITableViewCell, InitializableView, ConfigurableCell {
         forwardIcon.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(Constants.smallInset)
-            $0.height.equalTo(40)
+            $0.height.equalTo(35)
         }
     }
 
@@ -54,7 +54,7 @@ final class ItemCell: UITableViewCell, InitializableView, ConfigurableCell {
         subtitleLabel.numberOfLines = 0
 
         forwardIcon.image = .forwardIcon
-        forwardIcon.tintColor = .systemGreen
+        forwardIcon.tintColor = .systemGray
         forwardIcon.contentMode = .scaleAspectFit
     }
     

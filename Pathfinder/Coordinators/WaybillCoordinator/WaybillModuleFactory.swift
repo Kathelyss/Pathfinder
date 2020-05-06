@@ -3,5 +3,5 @@ import Foundation
 protocol WaybillModuleFactory {
 
     func createWaybillModule() -> WaybillModule
-    func createPathModule() -> PathModule
+    func createPathModule(title: String) -> PathModule
 }
