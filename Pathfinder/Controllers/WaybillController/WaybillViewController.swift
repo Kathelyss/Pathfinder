@@ -1,7 +1,8 @@
 import UIKit
 
 protocol WaybillModule: Presentable {
-    var onItemTap: ParameterClosure<Int>? { get set }
+    var onItemTap: ParameterClosure<Coordinate>? { get set }
+    var onStorageClear: VoidBlock? { get set }
 }
 
 final class WaybillViewController: BaseConfigurableController<WaybillViewModel>, WaybillModule {
@@ -9,13 +10,16 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
     private let emptyView = EmptyView()
     private let tableView = UITableView()
 
-    var onItemTap: ParameterClosure<Int>?
+    var onItemTap: ParameterClosure<Coordinate>?
+    var onStorageClear: VoidBlock?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLoadView()
         configureTableView()
+        // MOCK: replace on automatic data loading
+        viewModel.getOrderedWaybillItems()
     }
 
     override func addViews() {
@@ -44,7 +48,9 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
         super.configureAppearance()
 
         emptyView.configure(with: .noWaybill)
-        emptyView.isHidden = !tableView.isHidden
+        // MOCK: replace on automatic data loading
+        tableView.isHidden = false
+        emptyView.isHidden = true
     }
 
     override func localize() {
@@ -66,8 +72,7 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
 
 extension WaybillViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // MOCK: передать координаты item'a
-        onItemTap?(1)
+        onItemTap?(viewModel.orderedItems[indexPath.row].location.coordinate)
     }
 }
 
@@ -81,10 +86,8 @@ extension WaybillViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier,
                                                     for: indexPath) as? ItemCell {
-            // MOCK: replace on data from viewModel.currentWaybillItems
-            let cellViewModel = ItemCellViewModel.mockCellData
+            let cellViewModel = viewModel.cellModels[indexPath.row]
             cell.configure(with: cellViewModel)
-
             return cell
         }
         fatalError("Cell couldn't be dequeued")

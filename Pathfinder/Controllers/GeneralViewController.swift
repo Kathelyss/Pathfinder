@@ -51,7 +51,8 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
         super.configureAppearance()
 
         emptyView.configure(with: .noGeneralInfo)
-        emptyView.isHidden = !tableView.isHidden
+        tableView.isHidden = true
+        emptyView.isHidden = false
     }
 
     override func localize() {
@@ -64,15 +65,19 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
         super.bindViews()
 
         buttonsView.onUpdateButtonTap = {
-            // /getStorageInfo
+            // MOCK: /getStorageInfo - plan image + matrix
         }
 
-        buttonsView.onRequestButtonTap = {
-            // /getWaybill -> результат отображается в таблице
+        buttonsView.onRequestButtonTap = { [weak self] in
+            self?.viewModel.requestWaybill()
+            self?.tableView.isHidden = false
+            self?.tableView.reloadData()
         }
 
-        buttonsView.onClearButtonTap = {
-            // mainStorage.clear()
+        buttonsView.onClearButtonTap = { [weak self] in
+            self?.viewModel.currentWaybillItems.removeAll()
+            self?.tableView.isHidden = true
+            self?.tableView.reloadData()
         }
     }
 
@@ -95,10 +100,8 @@ extension GeneralViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.reuseIdentifier,
                                                     for: indexPath) as? ItemCell {
-            // MOCK: replace on data from viewModel.currentWaybillItems
-            let cellViewModel = ItemCellViewModel.mockCellDataArrowless
+            let cellViewModel = viewModel.cellModels[indexPath.row]
             cell.configure(with: cellViewModel)
-
             return cell
         }
         fatalError("Cell couldn't be dequeued")

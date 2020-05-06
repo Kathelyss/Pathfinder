@@ -9,14 +9,14 @@ struct EmptyViewModel {
 extension EmptyViewModel {
 
     static let noGeneralInfo = EmptyViewModel(title: "Пока ничего нет",
-                                              description: "Возможные опции отобразятся здесь, как только заработает бекенд",
+                                              description: "Загрузите конфигурацию склада и накладную для начала работы",
                                               image: .tabBarGeneral)
 
     static let noWaybill = EmptyViewModel(title: "Пока ничего нет",
-                                          description: "Список товаров из накладной отобразится здесь, как только заработает бекенд",
+                                          description: "Упорядоченный список товаров из накладной отобразится здесь, как только завершится расчёт",
                                           image: .tabBarWaybill)
 
     static let noPath = EmptyViewModel(title: "Пока ничего нет",
-                                       description: "Оптимальный маршрут отобразится здесь, как только заработает бекенд",
+                                       description: "Карта склада отобразится здесь, как только завершится загрузка",
                                        image: .tabBarPath)
 }

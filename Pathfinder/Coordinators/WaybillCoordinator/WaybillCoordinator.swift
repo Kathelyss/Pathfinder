@@ -31,8 +31,8 @@ final class WaybillCoordinator: BaseCoordinator {
         router.setRootModule(module)
     }
 
-    private func showPathModule(_ pinCoordinates: Int) {
-        // открывается карта с отметкой товара (show path module с пином по координатам товара)
+    private func showPathModule(_ pinCoordinates: Coordinate) {
+        // MOCK: добавить отметку товара по координатам
         let module = moduleFactory.createPathModule()
         router.pushModule(module, animated: true, hideNavBar: false)
     }

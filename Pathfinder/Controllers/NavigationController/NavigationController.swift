@@ -63,8 +63,8 @@ final class NavigationController: UINavigationController, InitializableView, UIG
         navigationBar.setBackgroundImage(UIImage(), for: .default)
 
         navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.systemBlue,
-            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .bold)
+            .foregroundColor: UIColor.black,
+            .font: UIFont.monospacedSystemFont(ofSize: 18, weight: .semibold)
         ]
 
         view.backgroundColor = .white
@@ -80,7 +80,8 @@ final class NavigationController: UINavigationController, InitializableView, UIG
         let animationDelay: TimeInterval = 0.005 // this is necessary, so that "viewWillDissappear" is called after
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDelay) {
             if viewController?.hidesBottomBarWhenPushed ?? false {
-//                TabBarAnimator.shared.changeTabBarPosition(to: .hidden)
+                // MOCK: add hide tabbar action
+                // TabBarAnimator.shared.changeTabBarPosition(to: .hidden)
             }
         }
     }
@@ -92,7 +93,8 @@ final class NavigationController: UINavigationController, InitializableView, UIG
 
     private func hideBottomBarIfNeeded(for viewController: UIViewController?) {
         if viewController?.hidesBottomBarWhenPushed ?? false, !(topViewController?.hidesBottomBarWhenPushed ?? true) {
-//            TabBarAnimator.shared.changeTabBarPosition(to: .revealed)
+            // MOCK: and reveal
+            // TabBarAnimator.shared.changeTabBarPosition(to: .revealed)
         }
     }
 }
