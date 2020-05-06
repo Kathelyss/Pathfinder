@@ -82,6 +82,7 @@
 		23BE9EEA2460A8C600572797 /* ACO2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EE92460A8C600572797 /* ACO2.swift */; };
 		23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEB24620FF800572797 /* UpperInfoView.swift */; };
 		23BE9EEF2462125600572797 /* UpperInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */; };
+		23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF024622B1C00572797 /* RequestButtonsView.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +164,7 @@
 		23BE9EE92460A8C600572797 /* ACO2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACO2.swift; sourceTree = "<group>"; };
 		23BE9EEB24620FF800572797 /* UpperInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoView.swift; sourceTree = "<group>"; };
 		23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoViewModel.swift; sourceTree = "<group>"; };
+		23BE9EF024622B1C00572797 /* RequestButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButtonsView.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				23707C382443A58D00175FD9 /* BasePlaceholderView */,
 				23707C532443EDF000175FD9 /* EmptyView */,
 				23BE9EED2462123F00572797 /* UpperInfoView */,
+				23BE9EF024622B1C00572797 /* RequestButtonsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				23707BCB2442897B00175FD9 /* Instructor.swift in Sources */,
 				23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */,
 				23069426244FBF8E0047DDD3 /* GraphUnits.swift in Sources */,
+				23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */,
 				23707BDD24428D6600175FD9 /* StackRoutable.swift in Sources */,
 				23707C132442A99900175FD9 /* PathViewModel.swift in Sources */,
 				23707B9D2442775100175FD9 /* NavigationController.swift in Sources */,

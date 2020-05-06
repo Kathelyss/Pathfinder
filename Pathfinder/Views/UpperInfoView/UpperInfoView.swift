@@ -8,9 +8,7 @@ final class UpperInfoView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        addRoundedShadow(shadowColor: .systemBlue,
-                         shadowOffset: CGSize(width: 0, height: Constants.tinyInset),
-                         shadowRadius: Constants.defaultInset)
+        addRoundedShadow()
     }
 
     override func addViews() {

@@ -23,9 +23,9 @@ final class WaybillViewController: BaseConfigurableController<WaybillViewModel>,
     override func configureLayout() {
         super.configureLayout()
 
-        emptyView.snp.makeConstraints { make in
-            make.top.equalTo(actualLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 

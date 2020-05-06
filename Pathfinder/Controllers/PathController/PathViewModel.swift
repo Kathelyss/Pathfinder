@@ -83,11 +83,8 @@ final class PathViewModel {
         let sourceNode = building.filter( { $0.name == sourceNodeName }).first
         let destinationNode = building.filter( { $0.name == destinationNodeName }).first
 
-        guard let source = sourceNode else {
-            throw PathfinderError.noSourceNode
-        }
-        guard let destination = destinationNode else {
-            throw PathfinderError.noDestinationNode
+        guard let source = sourceNode, let destination = destinationNode else {
+            throw PathfinderError.somethingWentWrong
         }
 
         if let path = dijkstraAlgorithm(from: source, to: destination) {

@@ -14,21 +14,21 @@ final class EmptyView: BasePlaceholderView {
     override func configureLayout() {
         super.configureLayout()
 
-        centerImageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-50)
-            make.size.equalTo(100)
+        centerImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-50)
+            $0.size.equalTo(100)
         }
 
-        titleLabel.snp.makeConstraints { make in
-            make.width.centerX.equalToSuperview()
-            make.bottom.equalTo(centerImageView.snp.top).offset(-Constants.bigInset)
+        titleLabel.snp.makeConstraints {
+            $0.width.centerX.equalToSuperview()
+            $0.bottom.equalTo(centerImageView.snp.top).offset(-Constants.bigInset)
         }
 
-        descriptionLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(centerImageView.snp.bottom).offset(Constants.bigInset)
-            make.leading.trailing.equalToSuperview().inset(Constants.hugeInset)
+        descriptionLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(centerImageView.snp.bottom).offset(Constants.bigInset)
+            $0.leading.trailing.equalToSuperview().inset(Constants.hugeInset)
         }
     }
 

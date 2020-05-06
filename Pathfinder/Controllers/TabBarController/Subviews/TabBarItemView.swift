@@ -12,7 +12,7 @@ final class TabBarItemView: BaseView {
     init(title: String, image: UIImage) {
         super.init(frame: .zero)
 
-        titleLabel.text = title
+//        titleLabel.text = title
         imageView.image = image
     }
 
@@ -20,23 +20,23 @@ final class TabBarItemView: BaseView {
         super.addViews()
 
         addSubview(imageView)
-        addSubview(titleLabel)
+//        addSubview(titleLabel)
     }
 
     override func configureLayout() {
         super.configureLayout()
 
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(Constants.smallInset)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(30)
+        imageView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview().inset(Constants.smallInset)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(40)
         }
 
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(Constants.tinyInset)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(Constants.tinyInset)
-        }
+//        titleLabel.snp.makeConstraints {
+//            $0.top.equalTo(imageView.snp.bottom).offset(Constants.tinyInset)
+//            $0.centerX.equalToSuperview()
+//            $0.bottom.equalToSuperview().inset(Constants.tinyInset)
+//        }
     }
 
     override func configureAppearance() {
@@ -44,7 +44,7 @@ final class TabBarItemView: BaseView {
 
         configureAppearance(forState: currentState)
 
-        titleLabel.textAlignment = .center
+//        titleLabel.textAlignment = .center
     }
 
     // MARK: - Public
@@ -57,8 +57,8 @@ final class TabBarItemView: BaseView {
     // MARK: - Private
 
     private func configureAppearance(forState state: State) {
-        titleLabel.font = state.font
-        titleLabel.textColor = state.textColor
+//        titleLabel.font = state.font
+//        titleLabel.textColor = state.textColor
         imageView.tintColor = state.tintColor
         backgroundColor = state.backgroundColor
     }

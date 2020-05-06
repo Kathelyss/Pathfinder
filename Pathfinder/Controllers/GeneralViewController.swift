@@ -7,6 +7,7 @@ protocol GeneralModule: Presentable {
 final class GeneralViewController: BaseConfigurableController<GeneralViewModel>, GeneralModule {
 
     private let emptyView = EmptyView()
+    private let buttonsView = RequestButtonsView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +19,21 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
         super.addViews()
 
         view.addSubview(emptyView)
+        view.addSubview(buttonsView)
     }
 
     override func configureLayout() {
         super.configureLayout()
 
-        emptyView.snp.makeConstraints { make in
-            make.top.equalTo(actualLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
+        emptyView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+
+        buttonsView.snp.makeConstraints {
+            $0.top.equalTo(actualLayoutGuide).inset(Constants.smallInset)
+            $0.leading.trailing.equalToSuperview().inset(Constants.smallInset)
+            $0.height.equalTo(40)
         }
     }
 
@@ -40,10 +48,21 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
 
         navigationItem.title = "Данные"
     }
+
+    override func bindViews() {
+        super.bindViews()
+
+        buttonsView.onUpdateButtonTap = {
+            // /getStorageInfo
+        }
+
+        buttonsView.onRequestButtonTap = {
+            // /getWaybill -> результат отображается таблицей под кнопками
+        }
+
+        buttonsView.onClearButtonTap = {
+            // mainStorage.clear()
+        }
+    }
 }
 
-/*
- Обновить наличие - запрос /getStorageInfo
- Запросить накладную - запрос /getWaybill-> результат отображается таблицей под кнопками
-Очистить задание
- */

@@ -54,13 +54,13 @@ final class TabBarView: BaseView {
     override func configureLayout() {
         super.configureLayout()
 
-        stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
-        roundedContainer.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.bottom.equalToSuperview().inset(Constants.mediumInset)
+        roundedContainer.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Constants.mediumInset)
         }
     }
 
@@ -73,8 +73,6 @@ final class TabBarView: BaseView {
 
         roundedContainer.layer.cornerRadius = Constants.cornerRadius
         roundedContainer.clipsToBounds = true
-        roundedContainer.layer.borderColor = UIColor.systemGreen.cgColor
-        roundedContainer.layer.borderWidth = 0.5
 
         layer.cornerRadius = Constants.cornerRadius
     }
@@ -82,7 +80,7 @@ final class TabBarView: BaseView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        addRoundedShadow(shadowColor: .systemBlue)
+        addRoundedShadow()
     }
 
     // MARK: - Private functions

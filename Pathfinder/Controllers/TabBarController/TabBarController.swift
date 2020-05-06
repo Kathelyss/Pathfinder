@@ -66,10 +66,10 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
 
     func configureLayout() {
 
-        tabBar.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
-            make.bottom.equalToSuperview()
-            make.height.equalTo(Constants.tabbarHeight)
+        tabBar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(Constants.tabbarHeight)
         }
     }
 
@@ -98,8 +98,8 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
         addChildController(controller, container: view)
         view.bringSubviewToFront(tabBar)
 
-        controller.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        controller.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
 
         selectedViewController = controller
