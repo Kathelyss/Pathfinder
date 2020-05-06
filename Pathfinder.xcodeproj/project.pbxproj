@@ -83,6 +83,8 @@
 		23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEB24620FF800572797 /* UpperInfoView.swift */; };
 		23BE9EEF2462125600572797 /* UpperInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */; };
 		23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF024622B1C00572797 /* RequestButtonsView.swift */; };
+		23BE9EF3246240FE00572797 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF2246240FE00572797 /* ItemCell.swift */; };
+		23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF52462429300572797 /* ItemCellViewModel.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +167,8 @@
 		23BE9EEB24620FF800572797 /* UpperInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoView.swift; sourceTree = "<group>"; };
 		23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoViewModel.swift; sourceTree = "<group>"; };
 		23BE9EF024622B1C00572797 /* RequestButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButtonsView.swift; sourceTree = "<group>"; };
+		23BE9EF2246240FE00572797 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		23BE9EF52462429300572797 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 				23707C532443EDF000175FD9 /* EmptyView */,
 				23BE9EED2462123F00572797 /* UpperInfoView */,
 				23BE9EF024622B1C00572797 /* RequestButtonsView.swift */,
+				23BE9EF42462428400572797 /* ItemCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +527,15 @@
 				23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */,
 			);
 			path = UpperInfoView;
+			sourceTree = "<group>";
+		};
+		23BE9EF42462428400572797 /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				23BE9EF2246240FE00572797 /* ItemCell.swift */,
+				23BE9EF52462429300572797 /* ItemCellViewModel.swift */,
+			);
+			path = ItemCell;
 			sourceTree = "<group>";
 		};
 		BDCE244B1C7DAA64B1A90589 /* Pods */ = {
@@ -699,10 +713,12 @@
 				23707BFC2442987600175FD9 /* TabBarController.swift in Sources */,
 				23707BEF244293F200175FD9 /* ApplicationCoordinatorInstructor.swift in Sources */,
 				23707C502443EC1400175FD9 /* EmptyViewModel.swift in Sources */,
+				23BE9EF3246240FE00572797 /* ItemCell.swift in Sources */,
 				23707BD524428C9400175FD9 /* UIWindow+Level.swift in Sources */,
 				23707BD324428BF500175FD9 /* AppRouter.swift in Sources */,
 				23707BD824428CF700175FD9 /* Router.swift in Sources */,
 				23707C3E2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift in Sources */,
+				23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */,
 				23707BBD2442871300175FD9 /* BaseCoordinator.swift in Sources */,
 				23707BC02442878F00175FD9 /* Coordinatable.swift in Sources */,
 				23707BB524427C6A00175FD9 /* Constants.swift in Sources */,

@@ -71,6 +71,7 @@ final class TabBarView: BaseView {
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
 
+        roundedContainer.backgroundColor = .white
         roundedContainer.layer.cornerRadius = Constants.cornerRadius
         roundedContainer.clipsToBounds = true
 
