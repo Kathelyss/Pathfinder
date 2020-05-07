@@ -4,14 +4,12 @@ final class PathViewModel {
 
     var navigationTitle: String = ""
 
-    var graph: [Floor] = []
-    var allNodes: [Node] = []
+    var graph: [Node] = []
     var path: [Node] = []
 
     init(title: String) {
         navigationTitle = title
         graph = createGraph()
-        allNodes = Array(graph.compactMap({ $0.nodes }).joined())
     }
 
     func parseNodes() throws -> [Node] {
@@ -28,7 +26,7 @@ final class PathViewModel {
         return try decoder.decode([Edge].self, from: data)
     }
 
-    func createGraph() -> [Floor] {
+    func createGraph() -> [Node] {
 //        do {
 //            let nodes = try parseNodes()
 //            let edgeStrictures = try parseEdges()
@@ -82,9 +80,9 @@ final class PathViewModel {
         return nil
     }
 
-    func findPath(in building: [Node], from sourceNodeName: String, to destinationNodeName: String) throws -> [Node] {
-        let sourceNode = building.filter( { $0.name == sourceNodeName }).first
-        let destinationNode = building.filter( { $0.name == destinationNodeName }).first
+    func findPath(in graph: [Node], from sourceNodeName: String, to destinationNodeName: String) throws -> [Node] {
+        let sourceNode = graph.filter( { $0.name == sourceNodeName }).first
+        let destinationNode = graph.filter( { $0.name == destinationNodeName }).first
 
         guard let source = sourceNode, let destination = destinationNode else {
             throw PathfinderError.somethingWentWrong

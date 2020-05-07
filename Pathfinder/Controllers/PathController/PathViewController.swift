@@ -33,7 +33,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
             planImageView.addSubview(pathView)
             isPathViewAdded = true
 
-            pathView.allPathNodes = viewModel.path
+            pathView.nodes = viewModel.path
         }
     }
     
@@ -97,6 +97,22 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         }
         present(alert, animated: true)
     }
+
+    private func runACODemo() {
+        print("Begin Ant Colony Optimization demo")
+
+        let numCities = 20
+        let numAnts = 4
+        let maxTime = 100
+
+        print("\nNumber of cities in problem = \(numCities)")
+
+        let antColonyOptimizator = AntColonyOptimizator(numberOfCities: numCities, numberOfAnts: numAnts)
+
+        antColonyOptimizator.run(maxTime: maxTime)
+
+        print("\nEnd Ant Colony Optimization demo")
+    }
 }
 
 // MARK: - LEGACY
@@ -105,9 +121,9 @@ extension PathViewController {
 
     func drawPath(fromText: String = "", toText: String = "") {
         do {
-            let path = try viewModel.findPath(in: viewModel.allNodes, from: fromText, to: toText)
+            let path = try viewModel.findPath(in: viewModel.graph, from: fromText, to: toText)
             viewModel.path = path
-            pathView.allPathNodes = viewModel.path
+            pathView.nodes = viewModel.path
             clearButton.isHidden = false
             setPins()
         } catch PathfinderError.noPathFound {
@@ -119,26 +135,21 @@ extension PathViewController {
 
     func tapClearRouteButton(_ sender: UIButton) {
         viewModel.path.removeAll()
-        pathView.allPathNodes = viewModel.path
+        pathView.nodes = viewModel.path
         [pathView.startView, pathView.endView, clearButton].forEach {
             $0.isHidden = true
         }
     }
 
     func setPins() {
-        if let startNodeForCurrentFloor = pathView.nodes.first, let pathStartNode = pathView.allPathNodes.first,
-            startNodeForCurrentFloor == pathStartNode {
+        if let pathStartNode = pathView.nodes.first {
             pathView.startView.center = pathView.getCoordinates(for: pathStartNode)
             pathView.startView.isHidden = false
-        } else {
-            pathView.startView.isHidden = true
         }
-        if let lastNodeForCurrentFloor = pathView.nodes.last, let pathEndNode = pathView.allPathNodes.last,
-            lastNodeForCurrentFloor == pathEndNode {
+
+        if let pathEndNode = pathView.nodes.last {
             pathView.endView.center = pathView.getCoordinates(for: pathEndNode)
             pathView.endView.isHidden = false
-        } else {
-            pathView.endView.isHidden = true
         }
     }
 

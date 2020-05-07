@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23069426244FBF8E0047DDD3 /* GraphUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069425244FBF8E0047DDD3 /* GraphUnits.swift */; };
+		23069426244FBF8E0047DDD3 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069425244FBF8E0047DDD3 /* Path.swift */; };
 		23069428244FC0D30047DDD3 /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069427244FC0D30047DDD3 /* PathView.swift */; };
 		2306942A244FC1E30047DDD3 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069429244FC1E30047DDD3 /* Errors.swift */; };
 		23707B992442775100175FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707B982442775100175FD9 /* AppDelegate.swift */; };
@@ -78,8 +78,7 @@
 		23707C4E2443EB0800175FD9 /* BaseSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C4D2443EB0800175FD9 /* BaseSeparatorView.swift */; };
 		23707C502443EC1400175FD9 /* EmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C4F2443EC1400175FD9 /* EmptyViewModel.swift */; };
 		23707C522443ED3A00175FD9 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C512443ED3A00175FD9 /* ConfigurableView.swift */; };
-		23BE9EE824605BAC00572797 /* ACO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EE724605BAC00572797 /* ACO.swift */; };
-		23BE9EEA2460A8C600572797 /* ACO2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EE92460A8C600572797 /* ACO2.swift */; };
+		23BE9EEA2460A8C600572797 /* AntColonyOptimizator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EE92460A8C600572797 /* AntColonyOptimizator.swift */; };
 		23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEB24620FF800572797 /* UpperInfoView.swift */; };
 		23BE9EEF2462125600572797 /* UpperInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */; };
 		23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF024622B1C00572797 /* RequestButtonsView.swift */; };
@@ -87,11 +86,14 @@
 		23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF52462429300572797 /* ItemCellViewModel.swift */; };
 		23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */; };
 		23BE9EFB246345E300572797 /* WaybillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFA246345E300572797 /* WaybillItem.swift */; };
+		23BE9EFD2463842C00572797 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFC2463842C00572797 /* Matrix.swift */; };
+		23BE9EFF2464AF0100572797 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFE2464AF0100572797 /* AStar.swift */; };
+		23BE9F012464AF6E00572797 /* Node+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F002464AF6E00572797 /* Node+Edge.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23069425244FBF8E0047DDD3 /* GraphUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUnits.swift; sourceTree = "<group>"; };
+		23069425244FBF8E0047DDD3 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		23069427244FC0D30047DDD3 /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
 		23069429244FC1E30047DDD3 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		23707B952442775100175FD9 /* Pathfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pathfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,8 +166,7 @@
 		23707C4D2443EB0800175FD9 /* BaseSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSeparatorView.swift; sourceTree = "<group>"; };
 		23707C4F2443EC1400175FD9 /* EmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewModel.swift; sourceTree = "<group>"; };
 		23707C512443ED3A00175FD9 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
-		23BE9EE724605BAC00572797 /* ACO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACO.swift; sourceTree = "<group>"; };
-		23BE9EE92460A8C600572797 /* ACO2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACO2.swift; sourceTree = "<group>"; };
+		23BE9EE92460A8C600572797 /* AntColonyOptimizator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntColonyOptimizator.swift; sourceTree = "<group>"; };
 		23BE9EEB24620FF800572797 /* UpperInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoView.swift; sourceTree = "<group>"; };
 		23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoViewModel.swift; sourceTree = "<group>"; };
 		23BE9EF024622B1C00572797 /* RequestButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestButtonsView.swift; sourceTree = "<group>"; };
@@ -173,6 +174,9 @@
 		23BE9EF52462429300572797 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		23BE9EFA246345E300572797 /* WaybillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillItem.swift; sourceTree = "<group>"; };
+		23BE9EFC2463842C00572797 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		23BE9EFE2464AF0100572797 /* AStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
+		23BE9F002464AF6E00572797 /* Node+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+Edge.swift"; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -439,13 +443,10 @@
 		23707C0D2442A88800175FD9 /* PathController */ = {
 			isa = PBXGroup;
 			children = (
-				23069425244FBF8E0047DDD3 /* GraphUnits.swift */,
 				23069427244FC0D30047DDD3 /* PathView.swift */,
 				23707C0E2442A8CD00175FD9 /* ModuleFactory+PathModule.swift */,
 				23707C102442A90C00175FD9 /* PathViewController.swift */,
 				23707C122442A99900175FD9 /* PathViewModel.swift */,
-				23BE9EE724605BAC00572797 /* ACO.swift */,
-				23BE9EE92460A8C600572797 /* ACO2.swift */,
 			);
 			path = PathController;
 			sourceTree = "<group>";
@@ -547,6 +548,11 @@
 		23BE9EF92463459900572797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23069425244FBF8E0047DDD3 /* Path.swift */,
+				23BE9F002464AF6E00572797 /* Node+Edge.swift */,
+				23BE9EFE2464AF0100572797 /* AStar.swift */,
+				23BE9EE92460A8C600572797 /* AntColonyOptimizator.swift */,
+				23BE9EFC2463842C00572797 /* Matrix.swift */,
 				23BE9EFA246345E300572797 /* WaybillItem.swift */,
 			);
 			path = Model;
@@ -688,12 +694,14 @@
 				23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */,
 				23707BCB2442897B00175FD9 /* Instructor.swift in Sources */,
 				23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */,
-				23069426244FBF8E0047DDD3 /* GraphUnits.swift in Sources */,
+				23069426244FBF8E0047DDD3 /* Path.swift in Sources */,
 				23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */,
 				23707BDD24428D6600175FD9 /* StackRoutable.swift in Sources */,
 				23707C132442A99900175FD9 /* PathViewModel.swift in Sources */,
 				23707B9D2442775100175FD9 /* NavigationController.swift in Sources */,
 				23707C182442AC0800175FD9 /* PathModuleFactory.swift in Sources */,
+				23BE9F012464AF6E00572797 /* Node+Edge.swift in Sources */,
+				23BE9EFF2464AF0100572797 /* AStar.swift in Sources */,
 				23707B992442775100175FD9 /* AppDelegate.swift in Sources */,
 				23707BF6244295F500175FD9 /* TabBarCoordinator.swift in Sources */,
 				23707C442443DE8600175FD9 /* ConfigurableController.swift in Sources */,
@@ -705,7 +713,6 @@
 				23707C2024437DC100175FD9 /* ModuleFactory+GeneralModule.swift in Sources */,
 				23707C1E24437DA200175FD9 /* GeneralViewModel.swift in Sources */,
 				23707C152442ABB100175FD9 /* PathCoordinator.swift in Sources */,
-				23BE9EE824605BAC00572797 /* ACO.swift in Sources */,
 				23707C3024439B9500175FD9 /* WaybillCoordinator.swift in Sources */,
 				23707C462443DF2000175FD9 /* BaseConfigurableController.swift in Sources */,
 				23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */,
@@ -752,11 +759,12 @@
 				23707BCD2442899900175FD9 /* CoordinatorInstructor.swift in Sources */,
 				23707BCF244289D700175FD9 /* CoordinatorFactory.swift in Sources */,
 				23707C372443A46400175FD9 /* BasePlaceholderViewModel.swift in Sources */,
+				23BE9EFD2463842C00572797 /* Matrix.swift in Sources */,
 				23707C4E2443EB0800175FD9 /* BaseSeparatorView.swift in Sources */,
 				23707C0524429BEE00175FD9 /* BaseView.swift in Sources */,
 				23707C2C2443948400175FD9 /* ModuleFactory+WaybillModule.swift in Sources */,
 				2306942A244FC1E30047DDD3 /* Errors.swift in Sources */,
-				23BE9EEA2460A8C600572797 /* ACO2.swift in Sources */,
+				23BE9EEA2460A8C600572797 /* AntColonyOptimizator.swift in Sources */,
 				23707BDB24428D5200175FD9 /* AppRoutable.swift in Sources */,
 				23707C0C2442A18B00175FD9 /* MainStorage.swift in Sources */,
 				23707BE224428DC400175FD9 /* Presentable.swift in Sources */,

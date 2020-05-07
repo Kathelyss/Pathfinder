@@ -1,45 +1,5 @@
 import Foundation
 
-struct Matrix<T> {
-    let rows: Int, columns: Int
-    var grid: [T]
-
-    init() {
-        rows = 0
-        columns = 0
-        grid = []
-    }
-
-    init(rows: Int, columns: Int, initValue: T) {
-        self.rows = rows
-        self.columns = columns
-        grid = []
-
-        for _ in 1...(self.rows * self.columns) {
-            grid.append(initValue)
-        }
-    }
-
-    func indexIsValidForRow(row: Int, column: Int) -> Bool {
-        return row >= 0 && row < rows && column >= 0 && column < columns
-    }
-
-    func indexIsValid(row: Int) -> Bool {
-        return row >= 0 && row < rows
-    }
-
-    subscript(row: Int, column: Int) -> T {
-        get {
-            assert(indexIsValidForRow(row: row, column: column), "Index out of range")
-            return grid[(row * columns) + column]
-        }
-        set {
-            assert(indexIsValidForRow(row: row, column: column), "Index out of range")
-            grid[(row * columns) + column] = newValue
-        }
-    }
-}
-
 struct Ant {
     var trail = [Int]()
 }
@@ -51,33 +11,35 @@ class AntColonyOptimizator {
     let Q = 2.0
 
     var numCities: Int
-    var numAnts: Int
+    var numberOfAnts: Int
 
     var ants = [Ant]()
     var pheromones = Matrix<Double>()
     var dists = Matrix<Int>()
 
-    init(_ numberOfCities: Int, numberOfAnts: Int) {
+    init(numberOfCities: Int, numberOfAnts: Int) {
 
         numCities = numberOfCities
-        numAnts = numberOfAnts
+        self.numberOfAnts = numberOfAnts
 
         print("\nInitializing dummy graph distances")
 
         dists = makeGraphDistances()
+        print("\nPrinting graph distances\n")
+        printDistMatrix()
 
         print("\nInitializing ants to random trails\n")
 
         ants = initAnts()
 
-        for i in 0..<numAnts {
-            print("\(i): [ ")
-
+        var str = ""
+        for i in 0..<numberOfAnts {
             for j in 0..<numCities {
-                print("\(ants[i].trail[j]) ")
+                str += "\(ants[i].trail[j]), "
             }
 
-            print("] len = \(length(ants[i].trail))\n")
+            print("\(i+1): [\(str)]\nlen = \(length(ants[i].trail))\n")
+            str = ""
         }
 
         print("\nInitializing pheromones on trails")
@@ -93,10 +55,22 @@ class AntColonyOptimizator {
                 let d = (Int(arc4random()) % 8) + 1  //1...9
                 distMatrix[i, j] = d
                 distMatrix[j, i] = d
+                print(distMatrix[i, j])
             }
         }
 
         return distMatrix
+    }
+
+    func printDistMatrix() {
+        var row = ""
+        for i in 0..<numCities {
+            for j in 0..<numCities {
+                row += "\(dists[i, j]) "
+            }
+            row += "\n"
+        }
+        print(row)
     }
 
     func distance(cityX: Int, cityY: Int) -> Double {
@@ -106,7 +80,7 @@ class AntColonyOptimizator {
     func initAnts() -> [Ant] {
         var antArray = [Ant]()
 
-        for _ in 0..<numAnts {
+        for _ in 0..<numberOfAnts {
             var ant = Ant()
             let start = Int(arc4random()) % numCities
             ant.trail = randomTrail(start)
@@ -138,7 +112,7 @@ class AntColonyOptimizator {
         trail[0] = trail[idx]
         trail[idx] = temp
 
-        return trail;
+        return trail
     }
 
     func indexOfTarget(trail: [Int], target: Int) -> Int {
@@ -156,7 +130,7 @@ class AntColonyOptimizator {
         var bestLength = length(ants[0].trail)
         var idxBestLength = 0
 
-        for k in 1..<numAnts {
+        for k in 1..<numberOfAnts {
             let len = length(ants[k].trail)
 
             if len < bestLength {
@@ -170,7 +144,6 @@ class AntColonyOptimizator {
 
     func length(_ trail: [Int]) -> Double {
         var result = 0.0
-
         for i in 0..<trail.count-1 {
             result += distance(cityX: trail[i], cityY: trail[i+1])
         }
@@ -193,7 +166,7 @@ class AntColonyOptimizator {
     func updateAnts() {
         let numCities = pheromones.rows
 
-        for k in 0..<numAnts {
+        for k in 0..<numberOfAnts {
             let startCity = Int(arc4random()) % numCities
             ants[k].trail = buildTrail(k: k, start: startCity)
         }
@@ -206,9 +179,9 @@ class AntColonyOptimizator {
         trail[0] = start
         visited[start] = true
 
-        for i in 0..<numCities-1 {
-            var cityX = trail[i]
-            var next = nextCity(k: k, cityX: cityX, visited: visited)
+        for i in 0..<numCities - 1 {
+            let cityX = trail[i]
+            let next = nextCity(k: k, cityX: cityX, visited: visited)
             trail[i+1] = next
             visited[next] = true
         }
@@ -275,7 +248,7 @@ class AntColonyOptimizator {
     func updatePheromones() {
         for i in 0..<pheromones.rows {
             for j in i+1..<pheromones.rows {
-                for k in 0..<numAnts {
+                for k in 0..<numberOfAnts {
                     let len = length(ants[k].trail)
                     let decrease = (1.0-rho) * pheromones[i, j]
                     var increase = 0.0
@@ -324,15 +297,16 @@ class AntColonyOptimizator {
     }
 
     func display(trail: [Int]) {
+        var resString = ""
         for i in 0..<trail.count {
-            print("\(trail[i]) ")
+            resString += "\(trail[i]), "
+//            print("\(trail[i]) ")
 
-            if i > 0 && i % 20 == 0 {
-                print()
-            }
+//            if i > 0 && i % 20 == 0 {
+//                print()
+//            }
         }
-
-        print()
+        print(resString)
     }
 
     func run(maxTime: Int) {
@@ -356,31 +330,14 @@ class AntColonyOptimizator {
                 bestLength = currBestLength
                 newBestTrail = currBestTrail
 
-                print("New best length of \(bestLength) found at time \(time)")
+                print("New best length of \(bestLength) found [time = \(time)]")
             }
-
             //++time
             time += 1
         }
 
-        print("\nTime complete")
-
-        print("\nBest trail found:")
+        print("\nTime complete. Best trail found: ")
         display(trail: newBestTrail)
-        print("\nLength of best trail found: \(bestLength)")
+        print("Length of best trail found: \(bestLength)")
     }
 }
-
-//print("Begin Ant Colony Optimization demo")
-//
-//let numCities = 20
-//let numAnts = 4
-//let maxTime = 100
-//
-//print("\nNumber of cities in problem = \(numCities)")
-//
-//let antColonyOptimizator = AntColonyOptimizator(numCities, numberOfAnts: numAnts)
-//
-//antColonyOptimizator.run(maxTime)
-//
-//print("\nEnd Ant Colony Optimization demo");
