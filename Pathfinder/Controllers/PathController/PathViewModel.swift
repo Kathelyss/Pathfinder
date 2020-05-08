@@ -22,7 +22,7 @@ final class PathViewModel {
 
     func calculateRoute() {
         do {
-            _ = try findAStarPath(from: graph[9], to: graph[5])
+            _ = try findAStarPath(from: graph[10], to: graph[5])
         } catch PathfinderError.noPathFound {
             print("no path found")
         } catch {
@@ -37,7 +37,6 @@ final class PathViewModel {
         let node4 = Node(coordinates: CGPoint(x: 0, y: 3))
 
         let node5 = Node(coordinates: CGPoint(x: 1, y: 0))
-//        let node3 = Node(coordinates: CGPoint(x: 1, y: 1))
         let node6 = Node(coordinates: CGPoint(x: 1, y: 3))
 
         let node7 = Node(coordinates: CGPoint(x: 2, y: 0))
@@ -49,24 +48,17 @@ final class PathViewModel {
         let node12 = Node(coordinates: CGPoint(x: 3, y: 2))
         let node13 = Node(coordinates: CGPoint(x: 3, y: 3))
 
-        node1.updateNeighbours(with: [node2, node5])
-        node2.updateNeighbours(with: [node1, node3, node5])
-        node3.updateNeighbours(with: [node2, node4, node6])
-        node4.updateNeighbours(with: [node3, node6])
+        let res = [node1, node2, node3, node4, node5, node6, node7, node8, node9, node10, node11, node12, node13]
 
-        node5.updateNeighbours(with: [node1, node2, node7, node8])
-        node6.updateNeighbours(with: [node3, node4, node9])
+        res.forEach { node in
+            let neighbours = res.filter {
+                ($0.coordinates.x == node.coordinates.x && ($0.coordinates.y == node.coordinates.y + 1 || $0.coordinates.y == node.coordinates.y - 1))
+                    || ($0.coordinates.y == node.coordinates.y && ($0.coordinates.x == node.coordinates.x + 1 || $0.coordinates.x == node.coordinates.x - 1))
+            }
+            node.updateNeighbours(with: neighbours)
+        }
 
-        node7.updateNeighbours(with: [node5, node8, node10, node11])
-        node8.updateNeighbours(with: [node5, node7, node10, node11, node12])
-        node9.updateNeighbours(with: [node6, node12, node13])
-
-        node10.updateNeighbours(with: [node7, node8, node11])
-        node11.updateNeighbours(with: [node7, node8, node10, node12])
-        node12.updateNeighbours(with: [node8, node9, node11, node13])
-        node13.updateNeighbours(with: [node9, node12])
-
-        return [node1, node2, node3, node4, node5, node6, node7, node8, node9, node10, node11, node12, node13]
+        return res
     }
 
     func findAStarPath(from startNode: Node, to goalNode: Node) throws -> [Node] {
@@ -116,28 +108,18 @@ final class PathViewModel {
     }
 
     func distanceBetween(_ firstNode: Node, _ secondNode: Node) -> Double {
-        var distance = 0.0
-        if firstNode.coordinates.x == secondNode.coordinates.x ||
-            firstNode.coordinates.y == secondNode.coordinates.y {
-            // secondNode - это верхний или нижний, левый или правый сосед
-            distance = 1
-        } else if firstNode.coordinates.x != secondNode.coordinates.x &&
-            firstNode.coordinates.y != secondNode.coordinates.y {
-            // secondNode - это диагональный сосед
-            distance = sqrt(2)
-        }
-
-        print("Distance between \(firstNode.description) & \(secondNode.description) is \(distance)")
-        return distance
+        return 1.0
     }
 
     func reconstructPath(_ startNode: Node, _ goalNode: Node) -> [Node] {
         var path = [Node]()
         var currentNode = goalNode
+        var cost = 0.0
         while currentNode != startNode {
+            cost += 1
             path.append(currentNode)
             guard let previousNodeInPath = currentNode.previousPathNode else { // у стартовой вершины нет cameFrom
-                return path.reversed()
+                break
             }
 
             currentNode = previousNodeInPath
@@ -149,7 +131,8 @@ final class PathViewModel {
         path.reversed().forEach {
             result += $0 == path.reversed().last ? $0.description : "\($0.description) -> "
         }
-        print("Found path: \(result)")
+        print("Found path: \(result), length: \(cost)")
+        // MOCK: append cost to ACO matrix
         return path.reversed()
     }
 
@@ -158,9 +141,8 @@ final class PathViewModel {
     }
 
     func heuristicCostEstimate(_ node: Node, _ goalNode: Node) -> Double {
-        let value = Double(max(abs(node.coordinates.x - goalNode.coordinates.x),
-                               abs(node.coordinates.y - goalNode.coordinates.y)))
-        print("Heuristic cost estimate for \(node.description) & \(goalNode.description) is \(value)")
-        return value
+        let res = Double(abs(node.coordinates.x - goalNode.coordinates.x) + abs(node.coordinates.y - goalNode.coordinates.y))
+        print("Heuristic cost estimate for \(node.description) & \(goalNode.description) is \(res)")
+        return res
     }
 }
