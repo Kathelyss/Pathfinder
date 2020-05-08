@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23069426244FBF8E0047DDD3 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069425244FBF8E0047DDD3 /* Path.swift */; };
 		23069428244FC0D30047DDD3 /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069427244FC0D30047DDD3 /* PathView.swift */; };
 		2306942A244FC1E30047DDD3 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069429244FC1E30047DDD3 /* Errors.swift */; };
 		23707B992442775100175FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707B982442775100175FD9 /* AppDelegate.swift */; };
@@ -85,15 +84,15 @@
 		23BE9EF3246240FE00572797 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF2246240FE00572797 /* ItemCell.swift */; };
 		23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF52462429300572797 /* ItemCellViewModel.swift */; };
 		23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */; };
-		23BE9EFB246345E300572797 /* WaybillItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFA246345E300572797 /* WaybillItem.swift */; };
+		23BE9EFB246345E300572797 /* MockEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFA246345E300572797 /* MockEndPoints.swift */; };
 		23BE9EFD2463842C00572797 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFC2463842C00572797 /* Matrix.swift */; };
-		23BE9EFF2464AF0100572797 /* AStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFE2464AF0100572797 /* AStar.swift */; };
-		23BE9F012464AF6E00572797 /* Node+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F002464AF6E00572797 /* Node+Edge.swift */; };
+		23BE9F012464AF6E00572797 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F002464AF6E00572797 /* Node.swift */; };
+		23BE9F052465008200572797 /* TabBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F042465008200572797 /* TabBarAnimator.swift */; };
+		23BE9F072465009F00572797 /* TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F062465009F00572797 /* TabBarPosition.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23069425244FBF8E0047DDD3 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		23069427244FC0D30047DDD3 /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
 		23069429244FC1E30047DDD3 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		23707B952442775100175FD9 /* Pathfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pathfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,10 +172,11 @@
 		23BE9EF2246240FE00572797 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		23BE9EF52462429300572797 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
-		23BE9EFA246345E300572797 /* WaybillItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaybillItem.swift; sourceTree = "<group>"; };
+		23BE9EFA246345E300572797 /* MockEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndPoints.swift; sourceTree = "<group>"; };
 		23BE9EFC2463842C00572797 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
-		23BE9EFE2464AF0100572797 /* AStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStar.swift; sourceTree = "<group>"; };
-		23BE9F002464AF6E00572797 /* Node+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+Edge.swift"; sourceTree = "<group>"; };
+		23BE9F002464AF6E00572797 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		23BE9F042465008200572797 /* TabBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimator.swift; sourceTree = "<group>"; };
+		23BE9F062465009F00572797 /* TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPosition.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +418,8 @@
 		23707C0124429B6F00175FD9 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				23BE9F042465008200572797 /* TabBarAnimator.swift */,
+				23BE9F062465009F00572797 /* TabBarPosition.swift */,
 				23707BFF2442999F00175FD9 /* TabBarItem.swift */,
 				23707C0224429B7B00175FD9 /* TabBarItemView.swift */,
 				23707C0924429CC700175FD9 /* TabBarView.swift */,
@@ -548,12 +550,10 @@
 		23BE9EF92463459900572797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				23069425244FBF8E0047DDD3 /* Path.swift */,
-				23BE9F002464AF6E00572797 /* Node+Edge.swift */,
-				23BE9EFE2464AF0100572797 /* AStar.swift */,
+				23BE9F002464AF6E00572797 /* Node.swift */,
 				23BE9EE92460A8C600572797 /* AntColonyOptimizator.swift */,
 				23BE9EFC2463842C00572797 /* Matrix.swift */,
-				23BE9EFA246345E300572797 /* WaybillItem.swift */,
+				23BE9EFA246345E300572797 /* MockEndPoints.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -694,14 +694,12 @@
 				23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */,
 				23707BCB2442897B00175FD9 /* Instructor.swift in Sources */,
 				23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */,
-				23069426244FBF8E0047DDD3 /* Path.swift in Sources */,
 				23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */,
 				23707BDD24428D6600175FD9 /* StackRoutable.swift in Sources */,
 				23707C132442A99900175FD9 /* PathViewModel.swift in Sources */,
 				23707B9D2442775100175FD9 /* NavigationController.swift in Sources */,
 				23707C182442AC0800175FD9 /* PathModuleFactory.swift in Sources */,
-				23BE9F012464AF6E00572797 /* Node+Edge.swift in Sources */,
-				23BE9EFF2464AF0100572797 /* AStar.swift in Sources */,
+				23BE9F012464AF6E00572797 /* Node.swift in Sources */,
 				23707B992442775100175FD9 /* AppDelegate.swift in Sources */,
 				23707BF6244295F500175FD9 /* TabBarCoordinator.swift in Sources */,
 				23707C442443DE8600175FD9 /* ConfigurableController.swift in Sources */,
@@ -736,9 +734,10 @@
 				23707BEF244293F200175FD9 /* ApplicationCoordinatorInstructor.swift in Sources */,
 				23707C502443EC1400175FD9 /* EmptyViewModel.swift in Sources */,
 				23BE9EF3246240FE00572797 /* ItemCell.swift in Sources */,
-				23BE9EFB246345E300572797 /* WaybillItem.swift in Sources */,
+				23BE9EFB246345E300572797 /* MockEndPoints.swift in Sources */,
 				23707BD524428C9400175FD9 /* UIWindow+Level.swift in Sources */,
 				23707BD324428BF500175FD9 /* AppRouter.swift in Sources */,
+				23BE9F072465009F00572797 /* TabBarPosition.swift in Sources */,
 				23707BD824428CF700175FD9 /* Router.swift in Sources */,
 				23707C3E2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift in Sources */,
 				23BE9EF62462429300572797 /* ItemCellViewModel.swift in Sources */,
@@ -750,6 +749,7 @@
 				23707BED2442932C00175FD9 /* ApplicationCoordinatorInterface.swift in Sources */,
 				23707BE524428EE300175FD9 /* InitializableView.swift in Sources */,
 				23707BF3244294D400175FD9 /* ApplicationState.swift in Sources */,
+				23BE9F052465008200572797 /* TabBarAnimator.swift in Sources */,
 				23707C3C2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift in Sources */,
 				23707C522443ED3A00175FD9 /* ConfigurableView.swift in Sources */,
 				23707BBB2442869F00175FD9 /* ApplicationCoordinator.swift in Sources */,

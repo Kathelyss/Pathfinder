@@ -4,7 +4,7 @@ protocol PathModule: Presentable {
 
 }
 
-final class PathViewController: BaseConfigurableController<PathViewModel>, PathModule {
+final class PathViewController: BaseConfigurableController<PathViewModel>, PathModule, UIScrollViewDelegate {
 
     private let emptyView = EmptyView()
     private var planImageView = UIImageView()
@@ -40,7 +40,8 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     override func addViews() {
         super.addViews()
 
-        view.addSubview(planImageView)
+        scrollView.addSubview(planImageView)
+        view.addSubview(scrollView)
         view.addSubview(emptyView)
         view.addSubview(upperInfoView)
     }
@@ -53,10 +54,14 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
-        planImageView.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.top.equalTo(actualLayoutGuide).inset(Constants.defaultInset)
-            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
+        }
+
+        planImageView.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 300, height: 500))
         }
 
         upperInfoView.snp.makeConstraints {
@@ -76,6 +81,8 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         clearButton.isHidden = true
         emptyView.isHidden = !planImageView.isHidden
         upperInfoView.isHidden = !isPathViewAdded
+        scrollView.contentMode = .scaleAspectFit
+        hidesBottomBarWhenPushed = true
     }
 
     override func localize() {
@@ -113,6 +120,31 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
         print("\nEnd Ant Colony Optimization demo")
     }
+
+    // MARK: - Scroll View Setup
+
+    func setupScrollView() {
+        scrollView.minimumZoomScale = 0.2
+        scrollView.zoomScale = scrollView.minimumZoomScale
+        scrollView.contentSize = CGSize(width: view.bounds.width * 2, height: view.bounds.height * 2)//planImageView.frame.size
+    }
+
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return planImageView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+//        let imageViewSize = planImageView.frame.size
+//        let scrollViewSize = scrollView.bounds.size
+//        let verticalPadding = imageViewSize.height < scrollViewSize.height
+//            ? (scrollViewSize.height - imageViewSize.height) / 2
+//            : 0
+//        let horizontalPadding = imageViewSize.width < scrollViewSize.width
+//            ? (scrollViewSize.width - imageViewSize.width) / 2
+//            : 0
+//        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding,
+//                                               bottom: verticalPadding, right: horizontalPadding)
+    }
 }
 
 // MARK: - LEGACY
@@ -121,7 +153,8 @@ extension PathViewController {
 
     func drawPath(fromText: String = "", toText: String = "") {
         do {
-            let path = try viewModel.findPath(in: viewModel.graph, from: fromText, to: toText)
+            let path: [Node] = []
+            //try viewModel.findPath(in: viewModel.graph, from: fromText, to: toText)
             viewModel.path = path
             pathView.nodes = viewModel.path
             clearButton.isHidden = false
@@ -151,26 +184,5 @@ extension PathViewController {
             pathView.endView.center = pathView.getCoordinates(for: pathEndNode)
             pathView.endView.isHidden = false
         }
-    }
-
-    func setupScrollView() {
-        scrollView.minimumZoomScale = 0.65
-        scrollView.zoomScale = scrollView.minimumZoomScale
-        scrollView.contentSize = planImageView.frame.size
-    }
-
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return planImageView
-    }
-
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        let imageViewSize = planImageView.frame.size
-        let scrollViewSize = scrollView.bounds.size
-        let verticalPadding = imageViewSize.height < scrollViewSize.height ?
-            (scrollViewSize.height - imageViewSize.height) / 2 : 0
-        let horizontalPadding = imageViewSize.width < scrollViewSize.width ?
-            (scrollViewSize.width - imageViewSize.width) / 2 : 0
-        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding,
-                                               bottom: verticalPadding, right: horizontalPadding)
     }
 }

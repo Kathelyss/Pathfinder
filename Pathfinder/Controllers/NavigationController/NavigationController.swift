@@ -81,8 +81,7 @@ final class NavigationController: UINavigationController, InitializableView, UIG
         let animationDelay: TimeInterval = 0.005 // this is necessary, so that "viewWillDissappear" is called after
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDelay) {
             if viewController?.hidesBottomBarWhenPushed ?? false {
-                // MOCK: add hide tabbar action
-                // TabBarAnimator.shared.changeTabBarPosition(to: .hidden)
+                TabBarAnimator.shared.changeTabBarPosition(to: .hidden)
             }
         }
     }
@@ -94,8 +93,7 @@ final class NavigationController: UINavigationController, InitializableView, UIG
 
     private func hideBottomBarIfNeeded(for viewController: UIViewController?) {
         if viewController?.hidesBottomBarWhenPushed ?? false, !(topViewController?.hidesBottomBarWhenPushed ?? true) {
-            // MOCK: and reveal
-            // TabBarAnimator.shared.changeTabBarPosition(to: .revealed)
+            TabBarAnimator.shared.changeTabBarPosition(to: .revealed)
         }
     }
 }

@@ -5,6 +5,8 @@ struct Matrix<T> {
     let columns: Int
     var grid: [T]
 
+    // MARK: - Initializer
+
     init() {
         rows = 0
         columns = 0

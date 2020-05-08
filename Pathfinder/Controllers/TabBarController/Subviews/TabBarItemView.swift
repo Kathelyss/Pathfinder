@@ -27,7 +27,7 @@ final class TabBarItemView: BaseView {
         super.configureLayout()
 
         imageView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(Constants.smallInset)
+            $0.top.bottom.lessThanOrEqualToSuperview().inset(Constants.smallInset)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(40)
         }

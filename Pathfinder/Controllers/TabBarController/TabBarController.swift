@@ -54,6 +54,7 @@ final class TabBarController: UIViewController, InitializableView, TabBarModule 
 
         initializeView()
         tabBar.delegate = self
+        TabBarAnimator.shared.tabBar = tabBar
         onModuleLoaded?(self)
     }
 
@@ -122,7 +123,7 @@ extension TabBarController: TabBarViewDelegate {
 }
 
 // MARK: - Constants
-private extension Constants {
+extension Constants {
     static let tabBarRevealedSafeArea = Constants.tabbarHeight
     static let tabBarPartiallyRevealedOffset = tabBarRevealedSafeArea * 0.7
     static let tabBarPartiallyRevealedSafeArea = Constants.tabBarRevealedSafeArea - Constants.tabBarPartiallyRevealedOffset

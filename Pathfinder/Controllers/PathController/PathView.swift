@@ -38,7 +38,7 @@ class PathView: UIView {
 
         context.setLineWidth(lineWidth)
 
-        drawCircle(nodeLocation: getCoordinates(for: Node(name: "", coordinates: CGPoint(x: 5, y: 5))))
+        drawCircle(nodeLocation: getCoordinates(for: Node(coordinates: CGPoint(x: 5, y: 5))))
 //        let startPoint = getCoordinates(for: nodes[0])
 //        context.move(to: startPoint)
 //        var nextPoint = CGPoint(x: 0, y: 0)
