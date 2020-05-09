@@ -30,10 +30,10 @@ struct MockEndPoints {
                                                             location: ItemLocation(rackNumber: 1,
                                                                                    shelfNumber: 2,
                                                                                    position: 3,
-                                                                                   coordinate: CGPoint(x: 15, y: 7))),
+                                                                                   coordinate: CGPoint(x: 1, y: 3))),
                                      count: 15)
 
-    static let nodes = [Node(coordinates: CGPoint(x: 0, y: 0)), Node(coordinates: CGPoint(x: 0, y: 1)),
+    static let nodes = [Node(coordinates: CGPoint(x: 0, y: 0), isEntrance: true), Node(coordinates: CGPoint(x: 0, y: 1)),
                         Node(coordinates: CGPoint(x: 0, y: 2)), Node(coordinates: CGPoint(x: 0, y: 3)),
                         Node(coordinates: CGPoint(x: 1, y: 0)), Node(coordinates: CGPoint(x: 1, y: 3)),
                         Node(coordinates: CGPoint(x: 2, y: 0)), Node(coordinates: CGPoint(x: 2, y: 1)),

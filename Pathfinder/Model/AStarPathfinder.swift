@@ -1,5 +1,7 @@
 import Foundation
 
+typealias OptimalTuple = (path: [Node], length: Int)
+
 final class AStarPathfinder {
 
     func findShortestPathBetween(_ node1: Node, _ node2: Node) -> OptimalTuple? {

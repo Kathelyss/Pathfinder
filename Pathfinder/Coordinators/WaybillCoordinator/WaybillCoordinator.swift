@@ -32,8 +32,9 @@ final class WaybillCoordinator: BaseCoordinator {
     }
 
     private func showPathModule(_ item: WaybillItem) {
-        // MOCK: добавить отметку товара по координатам
-        let module = moduleFactory.createPathModule(title: item.article.name)
+        let module = moduleFactory.createPathModule(title: item.article.name,
+                                                    graph: [],
+                                                    items: [Node(coordinates: item.location.coordinate)])
         router.pushModule(module, animated: true, hideNavBar: false)
     }
 }

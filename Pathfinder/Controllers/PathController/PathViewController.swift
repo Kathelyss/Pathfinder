@@ -25,15 +25,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         super.viewDidAppear(animated)
 
         scrollViewDidZoom(scrollView)
-
-        if !isPathViewAdded {
-            pathView = PathView(frame: planImageView.bounds)
-            pathView.backgroundColor = .clear
-            planImageView.addSubview(pathView)
-            isPathViewAdded = true
-
-            pathView.nodes = viewModel.path
-        }
+        drawItemPositions()
     }
     
     override func addViews() {
@@ -68,7 +60,8 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         }
 
         planImageView.snp.makeConstraints {
-            $0.size.equalTo(CGSize(width: 300, height: 500))
+            $0.center.equalToSuperview()
+            $0.edges.lessThanOrEqualToSuperview()
         }
 
         upperInfoView.snp.makeConstraints {
@@ -81,14 +74,13 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     override func configureAppearance() {
         super.configureAppearance()
 
+        hidesBottomBarWhenPushed = true
         view.backgroundColor = .white
-        planImageView.contentMode = .scaleAspectFit
-        planImageView.image = .smallPlanImage
         setupScrollView()
+//        planImageView.contentMode = .scaleAspectFit
+        planImageView.image = .smallPlanImage
         emptyView.isHidden = !planImageView.isHidden
         upperInfoView.isHidden = viewModel.navigationTitle != "Маршрут"
-        scrollView.contentMode = .scaleAspectFit
-        hidesBottomBarWhenPushed = true
     }
 
     override func localize() {
@@ -99,7 +91,38 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         navigationItem.title = viewModel.navigationTitle
     }
 
-    private func presentSuccessfullResultAlert() {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return planImageView
+    }
+
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        //        let imageViewSize = planImageView.frame.size
+        //        let scrollViewSize = scrollView.bounds.size
+        //        let verticalPadding = imageViewSize.height < scrollViewSize.height
+        //            ? (scrollViewSize.height - imageViewSize.height) / 2
+        //            : 0
+        //        let horizontalPadding = imageViewSize.width < scrollViewSize.width
+        //            ? (scrollViewSize.width - imageViewSize.width) / 2
+        //            : 0
+        //        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding,
+        //                                               bottom: verticalPadding, right: horizontalPadding)
+    }
+}
+
+private extension PathViewController {
+
+    func drawItemPositions() {
+        if !isPathViewAdded {
+            isPathViewAdded = true
+            pathView = PathView(frame: planImageView.bounds)
+            pathView.backgroundColor = .clear
+            planImageView.addSubview(pathView)
+
+            pathView.nodes = viewModel.positions
+        }
+    }
+
+    func presentSuccessfullResultAlert() {
         // MOCK: add handler: clearRoute + /updateStorageInfo
         let alert = UIAlertController.successfullResultActionSheet()
 
@@ -114,64 +137,9 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     // MARK: - Scroll View Setup
 
     func setupScrollView() {
-        scrollView.minimumZoomScale = 0.2
+        //        scrollView.minimumZoomScale = 0.2
         scrollView.zoomScale = scrollView.minimumZoomScale
         scrollView.contentSize = CGSize(width: view.bounds.width * 2, height: view.bounds.height * 2)//planImageView.frame.size
     }
 
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return planImageView
-    }
-
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-//        let imageViewSize = planImageView.frame.size
-//        let scrollViewSize = scrollView.bounds.size
-//        let verticalPadding = imageViewSize.height < scrollViewSize.height
-//            ? (scrollViewSize.height - imageViewSize.height) / 2
-//            : 0
-//        let horizontalPadding = imageViewSize.width < scrollViewSize.width
-//            ? (scrollViewSize.width - imageViewSize.width) / 2
-//            : 0
-//        scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding,
-//                                               bottom: verticalPadding, right: horizontalPadding)
-    }
-}
-
-// MARK: - LEGACY
-
-extension PathViewController {
-
-    func drawPath(fromText: String = "", toText: String = "") {
-        do {
-            let path: [Node] = []
-            //try viewModel.findPath(in: viewModel.graph, from: fromText, to: toText)
-            viewModel.path = path
-            pathView.nodes = viewModel.path
-            setPins()
-        } catch PathfinderError.noPathFound {
-            present(UIAlertController.errorAlert(message: "Невозможно построить маршрут"), animated: true)
-        } catch {
-            present(UIAlertController.errorAlert(message: "Что-то пошло не так"), animated: true)
-        }
-    }
-
-    func tapClearRouteButton(_ sender: UIButton) {
-        viewModel.path.removeAll()
-        pathView.nodes = viewModel.path
-        [pathView.startView, pathView.endView].forEach {//, clearButton].forEach {
-            $0.isHidden = true
-        }
-    }
-
-    func setPins() {
-        if let pathStartNode = pathView.nodes.first {
-            pathView.startView.center = pathView.getCoordinates(for: pathStartNode)
-            pathView.startView.isHidden = false
-        }
-
-        if let pathEndNode = pathView.nodes.last {
-            pathView.endView.center = pathView.getCoordinates(for: pathEndNode)
-            pathView.endView.isHidden = false
-        }
-    }
 }

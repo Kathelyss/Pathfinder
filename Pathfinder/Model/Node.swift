@@ -15,8 +15,9 @@ class Node: Hashable, Codable, CustomStringConvertible {
     // MARK: - Properties
 
     let coordinates: CGPoint
+    let isEntrance: Bool
     var description: String {
-        return "(\(coordinates.x), \(coordinates.y))"
+        return "(\(Int(coordinates.x)), \(Int(coordinates.y)))"
     }
 
     // MARK: - A*
@@ -30,8 +31,9 @@ class Node: Hashable, Codable, CustomStringConvertible {
 
     // MARK: - Initializer
 
-    init(coordinates: CGPoint) {
+    init(coordinates: CGPoint, isEntrance: Bool = false) {
         self.coordinates = coordinates
+        self.isEntrance = isEntrance
     }
 
     func updateNeighbours(with nodes: [Node]) {
