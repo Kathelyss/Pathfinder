@@ -47,7 +47,7 @@ final class ItemCell: UITableViewCell, InitializableView, ConfigurableCell {
 
     func configureAppearance() {
         titleLabel.font = .monospacedSystemFont(ofSize: 14, weight: .medium)
-        titleLabel.textColor = .systemGreen
+        titleLabel.textColor = .systemTeal
 
         subtitleLabel.font = .monospacedSystemFont(ofSize: 12, weight: .regular)
         subtitleLabel.textColor = .systemGray

@@ -32,4 +32,12 @@ struct MockEndPoints {
                                                                                    position: 3,
                                                                                    coordinate: CGPoint(x: 15, y: 7))),
                                      count: 15)
+
+    static let nodes = [Node(coordinates: CGPoint(x: 0, y: 0)), Node(coordinates: CGPoint(x: 0, y: 1)),
+                        Node(coordinates: CGPoint(x: 0, y: 2)), Node(coordinates: CGPoint(x: 0, y: 3)),
+                        Node(coordinates: CGPoint(x: 1, y: 0)), Node(coordinates: CGPoint(x: 1, y: 3)),
+                        Node(coordinates: CGPoint(x: 2, y: 0)), Node(coordinates: CGPoint(x: 2, y: 1)),
+                        Node(coordinates: CGPoint(x: 2, y: 3)), Node(coordinates: CGPoint(x: 3, y: 0)),
+                        Node(coordinates: CGPoint(x: 3, y: 1)), Node(coordinates: CGPoint(x: 3, y: 2)),
+                        Node(coordinates: CGPoint(x: 3, y: 3))]
 }

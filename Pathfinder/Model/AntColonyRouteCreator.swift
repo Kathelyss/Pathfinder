@@ -4,37 +4,34 @@ struct Ant {
     var trail = [Int]()
 }
 
-class AntColonyOptimizator {
+class AntColonyRouteCreator {
     let alpha = 3.0
     let beta = 2.0
     let rho = 0.01
     let Q = 2.0
 
-    var numCities: Int
-    var numberOfAnts: Int
+    let maxTime = 100
+    let numberOfAnts = 10
 
+    var distancesMatrix = Matrix<Int>()
     var ants = [Ant]()
     var pheromones = Matrix<Double>()
-    var dists = Matrix<Int>()
 
-    init(numberOfCities: Int, numberOfAnts: Int) {
+    // MARK: - Initializer
 
-        numCities = numberOfCities
-        self.numberOfAnts = numberOfAnts
+    init(dists: Matrix<Int>) {
+        distancesMatrix = dists
 
-        print("\nInitializing dummy graph distances")
-
-        dists = makeGraphDistances()
-        print("\nPrinting graph distances\n")
+        print("\nGraph distances are:\n")
         printDistMatrix()
 
         print("\nInitializing ants to random trails\n")
 
-        ants = initAnts()
+        ants = initAnts(count: numberOfAnts)
 
         var str = ""
-        for i in 0..<numberOfAnts {
-            for j in 0..<numCities {
+        for i in 0..<ants.count {
+            for j in 0..<distancesMatrix.columns {
                 str += "\(ants[i].trail[j]), "
             }
 
@@ -47,26 +44,11 @@ class AntColonyOptimizator {
         pheromones = initPheromones()
     }
 
-    func makeGraphDistances() -> Matrix<Int> {
-        var distMatrix = Matrix<Int>(rows: numCities, columns: numCities, initValue: 0)
-
-        for i in 0..<numCities {
-            for j in i+1..<numCities {
-                let d = (Int(arc4random()) % 8) + 1  //1...9
-                distMatrix[i, j] = d
-                distMatrix[j, i] = d
-                print(distMatrix[i, j])
-            }
-        }
-
-        return distMatrix
-    }
-
     func printDistMatrix() {
         var row = ""
-        for i in 0..<numCities {
-            for j in 0..<numCities {
-                row += "\(dists[i, j]) "
+        for i in 0..<distancesMatrix.columns {
+            for j in 0..<distancesMatrix.columns {
+                row += "\(distancesMatrix[i, j]) "
             }
             row += "\n"
         }
@@ -74,15 +56,15 @@ class AntColonyOptimizator {
     }
 
     func distance(cityX: Int, cityY: Int) -> Double {
-        return Double(dists[cityX, cityY])
+        return Double(distancesMatrix[cityX, cityY])
     }
 
-    func initAnts() -> [Ant] {
+    func initAnts(count: Int) -> [Ant] {
         var antArray = [Ant]()
 
-        for _ in 0..<numberOfAnts {
+        for _ in 0..<count {
             var ant = Ant()
-            let start = Int(arc4random()) % numCities
+            let start = Int(arc4random()) % distancesMatrix.columns
             ant.trail = randomTrail(start)
             antArray.append(ant)
         }
@@ -91,15 +73,15 @@ class AntColonyOptimizator {
     }
 
     func randomTrail(_ start: Int) -> [Int] {
-        var trail = [Int](repeating: 0, count: numCities)
+        var trail = [Int](repeating: 0, count: distancesMatrix.columns)
 
-        for i in 0..<numCities {
+        for i in 0..<distancesMatrix.columns {
             trail[i] = i
         }
 
         //Fisher-Yates shuffle algorithm
-        for i in 0..<numCities {
-            let r0 = Int(arc4random()) % (numCities-i)
+        for i in 0..<distancesMatrix.columns {
+            let r0 = Int(arc4random()) % (distancesMatrix.columns-i)
             let r = r0 + i
             let tmp = trail[r]
             trail[r] = trail[i]
@@ -130,7 +112,7 @@ class AntColonyOptimizator {
         var bestLength = length(ants[0].trail)
         var idxBestLength = 0
 
-        for k in 1..<numberOfAnts {
+        for k in 1..<ants.count {
             let len = length(ants[k].trail)
 
             if len < bestLength {
@@ -152,7 +134,9 @@ class AntColonyOptimizator {
     }
 
     func initPheromones() -> Matrix<Double> {
-        var pheromoneArray = Matrix<Double>(rows: numCities, columns: numCities, initValue: 0.0)
+        var pheromoneArray = Matrix<Double>(rows: distancesMatrix.columns,
+                                            columns: distancesMatrix.columns,
+                                            initValue: 0.0)
 
         for i in 0..<pheromoneArray.rows {
             for j in 0..<pheromoneArray.columns {
@@ -164,22 +148,19 @@ class AntColonyOptimizator {
     }
 
     func updateAnts() {
-        let numCities = pheromones.rows
-
-        for k in 0..<numberOfAnts {
-            let startCity = Int(arc4random()) % numCities
+        for k in 0..<ants.count {
+            let startCity = Int(arc4random()) % distancesMatrix.columns
             ants[k].trail = buildTrail(k: k, start: startCity)
         }
     }
 
     func buildTrail(k: Int, start: Int) -> [Int] {
-        let numCities = pheromones.rows
-        var trail = [Int](repeating: 0, count: numCities)
-        var visited = [Bool](repeating: false, count: numCities)
+        var trail = [Int](repeating: 0, count: distancesMatrix.columns)
+        var visited = [Bool](repeating: false, count: distancesMatrix.columns)
         trail[0] = start
         visited[start] = true
 
-        for i in 0..<numCities - 1 {
+        for i in 0..<distancesMatrix.columns - 1 {
             let cityX = trail[i]
             let next = nextCity(k: k, cityX: cityX, visited: visited)
             trail[i+1] = next
@@ -213,8 +194,7 @@ class AntColonyOptimizator {
     }
 
     func moveProbabilities(k: Int, cityX: Int, visited: [Bool]) -> [Double] {
-        let numCities = pheromones.rows
-        var taueta = [Double](repeating: 0.0, count: numCities)
+        var taueta = [Double](repeating: 0.0, count: distancesMatrix.columns)
         var sum = 0.0
 
         for i in 0..<taueta.count {
@@ -228,15 +208,15 @@ class AntColonyOptimizator {
 
                 if taueta[i] < 0.0001 {
                     taueta[i] = 0.0001
-                } else if taueta[i] > Double.greatestFiniteMagnitude / Double(numCities * 100) {
-                    taueta[i] = Double.greatestFiniteMagnitude / Double(numCities * 100)
+                } else if taueta[i] > Double.greatestFiniteMagnitude / Double(distancesMatrix.columns * 100) {
+                    taueta[i] = Double.greatestFiniteMagnitude / Double(distancesMatrix.columns * 100)
                 }
             }
 
             sum += taueta[i]
         }
 
-        var probs = [Double](repeating: 0.0, count: numCities)
+        var probs = [Double](repeating: 0.0, count: distancesMatrix.columns)
 
         for i in 0..<probs.count {
             probs[i] = taueta[i] / sum
@@ -248,7 +228,7 @@ class AntColonyOptimizator {
     func updatePheromones() {
         for i in 0..<pheromones.rows {
             for j in i+1..<pheromones.rows {
-                for k in 0..<numberOfAnts {
+                for k in 0..<ants.count {
                     let len = length(ants[k].trail)
                     let decrease = (1.0-rho) * pheromones[i, j]
                     var increase = 0.0
@@ -309,7 +289,7 @@ class AntColonyOptimizator {
         print(resString)
     }
 
-    func run(maxTime: Int) {
+    func run() -> [Int] {
         var newBestTrail = bestTrail()
         var bestLength = length(newBestTrail)
 
@@ -339,5 +319,6 @@ class AntColonyOptimizator {
         print("\nTime complete. Best trail found: ")
         display(trail: newBestTrail)
         print("Length of best trail found: \(bestLength)")
+        return newBestTrail
     }
 }

@@ -11,7 +11,6 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     private var upperInfoView = UpperInfoView()
 
     private var scrollView = UIScrollView()
-    private var clearButton = UIButton()
 
     var pathView: PathView!
     var isPathViewAdded = false
@@ -46,6 +45,14 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         view.addSubview(upperInfoView)
     }
 
+    override func bindViews() {
+        super.bindViews()
+
+        upperInfoView.onButtonTap = { [weak viewModel] in
+            viewModel?.createRoute()
+        }
+    }
+
     override func configureLayout() {
         super.configureLayout()
 
@@ -78,9 +85,8 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         planImageView.contentMode = .scaleAspectFit
         planImageView.image = .smallPlanImage
         setupScrollView()
-        clearButton.isHidden = true
         emptyView.isHidden = !planImageView.isHidden
-        upperInfoView.isHidden = !isPathViewAdded
+        upperInfoView.isHidden = viewModel.navigationTitle != "Маршрут"
         scrollView.contentMode = .scaleAspectFit
         hidesBottomBarWhenPushed = true
     }
@@ -103,22 +109,6 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
             popoverController.permittedArrowDirections = [.down]
         }
         present(alert, animated: true)
-    }
-
-    private func runACODemo() {
-        print("Begin Ant Colony Optimization demo")
-
-        let numCities = 20
-        let numAnts = 4
-        let maxTime = 100
-
-        print("\nNumber of cities in problem = \(numCities)")
-
-        let antColonyOptimizator = AntColonyOptimizator(numberOfCities: numCities, numberOfAnts: numAnts)
-
-        antColonyOptimizator.run(maxTime: maxTime)
-
-        print("\nEnd Ant Colony Optimization demo")
     }
 
     // MARK: - Scroll View Setup
@@ -157,7 +147,6 @@ extension PathViewController {
             //try viewModel.findPath(in: viewModel.graph, from: fromText, to: toText)
             viewModel.path = path
             pathView.nodes = viewModel.path
-            clearButton.isHidden = false
             setPins()
         } catch PathfinderError.noPathFound {
             present(UIAlertController.errorAlert(message: "Невозможно построить маршрут"), animated: true)
@@ -169,7 +158,7 @@ extension PathViewController {
     func tapClearRouteButton(_ sender: UIButton) {
         viewModel.path.removeAll()
         pathView.nodes = viewModel.path
-        [pathView.startView, pathView.endView, clearButton].forEach {
+        [pathView.startView, pathView.endView].forEach {//, clearButton].forEach {
             $0.isHidden = true
         }
     }

@@ -3,9 +3,9 @@ import UIKit
 final class RequestButtonsView: BaseView {
 
     private let stackView = UIStackView()
-    private let updateWarehouseStateButton = UIButton()
-    private let requestWaybillButton = UIButton()
-    private let clearTaskButton = UIButton()
+    private let updateWarehouseStateButton = StyledButton()
+    private let requestWaybillButton = StyledButton()
+    private let clearTaskButton = StyledButton()
 
     var onUpdateButtonTap: VoidBlock?
     var onRequestButtonTap: VoidBlock?
@@ -35,17 +35,6 @@ final class RequestButtonsView: BaseView {
         stackView.axis = .horizontal
         stackView.spacing = Constants.smallInset
         stackView.distribution = .fillEqually
-
-        [updateWarehouseStateButton, requestWaybillButton, clearTaskButton].forEach {
-            $0.titleColor = .systemBlue
-            $0.textFont = .monospacedSystemFont(ofSize: 14, weight: .medium)
-            $0.titleLabel?.numberOfLines = 0
-            $0.titleLabel?.textAlignment = .center
-            $0.layer.borderWidth = 1
-            $0.layer.borderColor = UIColor.systemBlue.cgColor
-            $0.layer.cornerRadius = Constants.cornerRadius
-            $0.clipsToBounds = true
-        }
     }
 
     override func bindViews() {

@@ -2,7 +2,7 @@ import UIKit
 
 extension UIView {
 
-    func addRoundedShadow(shadowColor: UIColor = .systemBlue,
+    func addRoundedShadow(shadowColor: UIColor = .systemTeal,
                           shadowOpacity: Float = 0.2,
                           shadowOffset: CGSize = CGSize(width: 0, height: Constants.tinyInset),
                           shadowRadius: CGFloat = Constants.defaultInset) {

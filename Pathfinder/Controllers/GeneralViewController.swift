@@ -22,8 +22,8 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
         super.addViews()
 
         view.addSubview(emptyView)
-        view.addSubview(buttonsView)
         view.addSubview(tableView)
+        view.addSubview(buttonsView)
     }
 
     override func configureLayout() {
