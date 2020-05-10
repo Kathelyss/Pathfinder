@@ -39,9 +39,15 @@ final class PathViewModel {
         }
 
         let antColonyOptimizator = AntColonyRouteCreator(dists: matrix)
-        antColonyOptimizator.run().forEach {
+        antColonyOptimizator.findOptimalRoute().forEach {
             path.append(requiredWalkableNodes[$0])
         }
+
+        var whichIs = ""
+        path.forEach {
+            whichIs += $0 == path.last ? $0.description : "\($0.description) -> "
+        }
+        print("\(whichIs)")
         // MOCK: отрисовать получившийся маршрут (path) на карте с номерами вершин
     }
 }

@@ -2,34 +2,17 @@ import UIKit
 
 class PathView: UIView {
 
+    let lineWidth = CGFloat(5)
     var nodes: [Node] = [] {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    lazy var startView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        let image = #imageLiteral(resourceName: "icon_start_pin")
-        view.image = image.withRenderingMode(.alwaysTemplate)
-        view.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        self.addSubview(view)
-        return view
-    }()
-
-    lazy var endView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 45))
-        let image = #imageLiteral(resourceName: "icon_end_pin")
-        view.image = image.withRenderingMode(.alwaysTemplate)
-        view.tintColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-        self.addSubview(view)
-        return view
-    }()
-
-    let lineWidth = CGFloat(5)
-
     public override func draw(_ rect: CGRect) {
-//        guard nodes.isEmpty == false else { return }
+        guard !nodes.isEmpty else {
+            return
+        }
 
         guard let context = UIGraphicsGetCurrentContext() else {
             print("Error: no context found!")
@@ -38,7 +21,7 @@ class PathView: UIView {
 
         context.setLineWidth(lineWidth)
 
-        drawCircle(nodeLocation: getCoordinates(for: Node(coordinates: CGPoint(x: 5, y: 5))))
+        nodes.forEach { drawCircle(nodeLocation: getCoordinates(for: $0)) }
 //        let startPoint = getCoordinates(for: nodes[0])
 //        context.move(to: startPoint)
 //        var nextPoint = CGPoint(x: 0, y: 0)
@@ -73,7 +56,7 @@ class PathView: UIView {
                                       y: nodeLocation.y - radius,
                                       width: radius * 2,
                                       height: radius * 2))
-        context.setFillColor(#colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1))
+        context.setFillColor(UIColor.systemTeal.cgColor)
         context.fillPath()
     }
 
@@ -117,8 +100,8 @@ class PathView: UIView {
     func getCoordinates(for node: Node) -> CGPoint {
         let xMultiplier = bounds.size.width / Constant.xCellCount
         let yMultiplier = bounds.size.height / Constant.yCellCount
-        return CGPoint(x: node.coordinates.x * xMultiplier + lineWidth,
-                       y: node.coordinates.y * yMultiplier + lineWidth)
+        return CGPoint(x: (node.coordinates.x * xMultiplier + lineWidth) * 10,
+                       y: (node.coordinates.y * yMultiplier + lineWidth) * 10)
     }
 }
 

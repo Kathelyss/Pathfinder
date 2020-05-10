@@ -40,8 +40,6 @@ private extension AStarPathfinder {
                 throw PathfinderError.somethingWentWrong
             }
 
-            print("----\nConsider node: \(currentNode.description)")
-
             if currentNode == goalNode {
                 return reconstructPath(startNode, goalNode)
             }
@@ -90,12 +88,6 @@ private extension AStarPathfinder {
         }
 
         path.append(startNode)
-
-        var result = ""
-        path.reversed().forEach {
-            result += $0 == path.reversed().last ? $0.description : "\($0.description) -> "
-        }
-        print("Found path: \(result), length: \(cost)")
         return (path.reversed(), cost)
     }
 }
