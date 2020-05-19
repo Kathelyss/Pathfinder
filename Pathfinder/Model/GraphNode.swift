@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class Node: Hashable, Codable, CustomStringConvertible {
+final class GraphNode: Hashable, Codable, CustomStringConvertible {
 
     // MARK: - Protocol conformance
     
@@ -8,7 +8,7 @@ class Node: Hashable, Codable, CustomStringConvertible {
         hasher.combine(description)
     }
 
-    static func == (lhs: Node, rhs: Node) -> Bool {
+    static func == (lhs: GraphNode, rhs: GraphNode) -> Bool {
         return lhs.coordinates == rhs.coordinates
     }
 
@@ -21,8 +21,8 @@ class Node: Hashable, Codable, CustomStringConvertible {
     }
 
     // MARK: - A*
-    var neighbours: [Node] = []
-    var previousPathNode: Node?
+    var neighbours: [GraphNode] = []
+    var previousNode: GraphNode?
     var g: Double = Double.greatestFiniteMagnitude
     var h: Double = Double.greatestFiniteMagnitude
     var f: Double {
@@ -36,7 +36,7 @@ class Node: Hashable, Codable, CustomStringConvertible {
         self.isEntrance = isEntrance
     }
 
-    func updateNeighbours(with nodes: [Node]) {
+    func updateNeighbours(with nodes: [GraphNode]) {
         neighbours = nodes
     }
 }

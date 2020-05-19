@@ -34,7 +34,7 @@ final class WaybillCoordinator: BaseCoordinator {
     private func showPathModule(_ item: WaybillItem) {
         let module = moduleFactory.createPathModule(title: item.article.name,
                                                     graph: [],
-                                                    items: [Node(coordinates: item.location.coordinate)])
+                                                    items: [GraphNode(coordinates: item.location.coordinate)])
         router.pushModule(module, animated: true, hideNavBar: false)
     }
 }

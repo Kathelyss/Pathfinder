@@ -1,12 +1,12 @@
 import Foundation
 
-typealias OptimalTuple = (path: [Node], length: Int)
+typealias OptimalPath = (path: [GraphNode], length: Int)
 
 final class AStarPathfinder {
 
-    func findShortestPathBetween(_ node1: Node, _ node2: Node) -> OptimalTuple? {
+    func findShortestPathBetween(_ node1: GraphNode, _ node2: GraphNode) -> OptimalPath? {
         do {
-            return try findPathWithAStarMethod(from: node1, to: node2)
+            return try findPathWithAStarAlgorithm(from: node1, to: node2)
         } catch PathfinderError.noPathFound {
             print("Unable to find path between \(node1.description) & \(node2.description)")
         } catch {
@@ -19,18 +19,18 @@ final class AStarPathfinder {
 
 private extension AStarPathfinder {
 
-    func findCheapestFScoreNodeIn(_ set: [Node]) -> Node? {
+    func findCheapestFScoreNodeIn(_ set: [GraphNode]) -> GraphNode? {
         return set.min { $0.f < $1.f }
     }
 
-    func heuristicCostEstimate(_ currentNode: Node, _ goalNode: Node) -> Double {
+    func heuristicCostEstimate(_ currentNode: GraphNode, _ goalNode: GraphNode) -> Double {
         return Double(abs(currentNode.coordinates.x - goalNode.coordinates.x) +
             abs(currentNode.coordinates.y - goalNode.coordinates.y))
     }
 
-    func findPathWithAStarMethod(from startNode: Node, to goalNode: Node) throws -> OptimalTuple {
-        var closedSet = [Node]()            // Множество вершин, которые уже обработаны (раскрыты)
-        var openSet: [Node] = [startNode]   // Множество вершин(очередь), которые предстоит обработать (раскрыть)
+    func findPathWithAStarAlgorithm(from startNode: GraphNode, to goalNode: GraphNode) throws -> OptimalPath {
+        var closedSet = [GraphNode]()            // Множество вершин, которые уже обработаны (раскрыты)
+        var openSet: [GraphNode] = [startNode]   // Множество вершин(очередь), которые предстоит обработать (раскрыть)
 
         startNode.g = 0                     // g(x). Стоимость пути от начальной вершины. У start g(x) = 0
         startNode.h = heuristicCostEstimate(startNode, goalNode)    // Эвристическая оценка расстояния до цели. h(x)
@@ -63,7 +63,7 @@ private extension AStarPathfinder {
                 }
 
                 if isTentativeBetter {
-                    neighbourNode.previousPathNode = currentNode
+                    neighbourNode.previousNode = currentNode
                     neighbourNode.g = tentativeGScore
                     neighbourNode.h = heuristicCostEstimate(neighbourNode, goalNode)
                 }
@@ -73,14 +73,14 @@ private extension AStarPathfinder {
         throw PathfinderError.noPathFound
     }
 
-    func reconstructPath(_ startNode: Node, _ goalNode: Node) -> OptimalTuple {
-        var path = [Node]()
+    func reconstructPath(_ startNode: GraphNode, _ goalNode: GraphNode) -> OptimalPath {
+        var path = [GraphNode]()
         var currentNode = goalNode
         var cost = 0
         while currentNode != startNode {
             cost += 1
             path.append(currentNode)
-            guard let previousNodeInPath = currentNode.previousPathNode else { // у стартовой вершины нет cameFrom
+            guard let previousNodeInPath = currentNode.previousNode else { // у стартовой вершины нет cameFrom
                 break
             }
 

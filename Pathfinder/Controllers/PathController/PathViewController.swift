@@ -1,4 +1,6 @@
 import UIKit
+import RxCocoa
+import RxSwift
 
 protocol PathModule: Presentable {
 
@@ -7,13 +9,15 @@ protocol PathModule: Presentable {
 final class PathViewController: BaseConfigurableController<PathViewModel>, PathModule, UIScrollViewDelegate {
 
     private let emptyView = EmptyView()
-    private var planImageView = UIImageView()
     private var upperInfoView = UpperInfoView()
+    private var planImageView = UIImageView()
+    private var planView: PlanView!
+    private var isMapViewAdded = false
+
+    private let disposeBag = DisposeBag()
 
     private var scrollView = UIScrollView()
 
-    var pathView: PathView!
-    var isPathViewAdded = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         super.viewDidAppear(animated)
 
         scrollViewDidZoom(scrollView)
-        drawItemPositions()
+        drawMap()
     }
     
     override func addViews() {
@@ -43,6 +47,18 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         upperInfoView.onButtonTap = { [weak viewModel] in
             viewModel?.createRoute()
         }
+
+        viewModel.itemsRecievedDriver
+            .drive(onNext: { [weak self] in
+                self?.drawItems()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.pathFoundDriver
+            .drive(onNext: { [weak self] in
+                self?.drawPath()
+            })
+            .disposed(by: disposeBag)
     }
 
     override func configureLayout() {
@@ -53,21 +69,21 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
             $0.leading.trailing.bottom.equalToSuperview()
         }
 
-        scrollView.snp.makeConstraints {
-            $0.top.equalTo(actualLayoutGuide).inset(Constants.defaultInset)
-            $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
-        }
-
-        planImageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.edges.lessThanOrEqualToSuperview()
-        }
-
         upperInfoView.snp.makeConstraints {
             $0.top.equalTo(actualLayoutGuide).inset(Constants.smallInset)
             $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
             $0.height.lessThanOrEqualTo(80)
+        }
+
+        planImageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.edges.lessThanOrEqualToSuperview().inset(Constants.defaultInset)
+        }
+
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(upperInfoView.snp.bottom).offset(Constants.defaultInset)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
         }
     }
 
@@ -77,8 +93,6 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         hidesBottomBarWhenPushed = true
         view.backgroundColor = .white
         setupScrollView()
-//        planImageView.contentMode = .scaleAspectFit
-        planImageView.image = .smallPlanImage
         emptyView.isHidden = !planImageView.isHidden
         upperInfoView.isHidden = viewModel.navigationTitle != "Маршрут"
     }
@@ -86,9 +100,9 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     override func localize() {
         super.localize()
 
+        navigationItem.title = viewModel.navigationTitle
         emptyView.configure(with: .noPath)
         upperInfoView.configure(with: .mockInfo)
-        navigationItem.title = viewModel.navigationTitle
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -111,15 +125,24 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
 private extension PathViewController {
 
-    func drawItemPositions() {
-        if !isPathViewAdded {
-            isPathViewAdded = true
-            pathView = PathView(frame: planImageView.bounds)
-            pathView.backgroundColor = .clear
-            planImageView.addSubview(pathView)
+    func drawMap() {
+        if !isMapViewAdded {
+            isMapViewAdded = true
+            planView = PlanView(frame: planImageView.bounds)
+            planView.backgroundColor = .clear
+            planImageView.addSubview(planView)
 
-            pathView.nodes = viewModel.positions
+//            mapView.shelfs = viewModel.positions
+            planView.items = viewModel.items
         }
+    }
+
+    func drawItems() {
+        planView.items = viewModel.items
+    }
+
+    func drawPath() {
+        planView.path = viewModel.path
     }
 
     func presentSuccessfullResultAlert() {

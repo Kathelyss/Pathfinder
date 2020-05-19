@@ -23,6 +23,18 @@ final class GeneralCoordinator: BaseCoordinator {
 
     private func showGeneralModule() {
         let module = moduleFactory.createGeneralModule()
+
+        module.onItemTap = { [weak self] item in
+            self?.showPathModule(item)
+        }
+        
         router.setRootModule(module)
+    }
+
+    private func showPathModule(_ item: WaybillItem) {
+        let module = moduleFactory.createPathModule(title: item.article.name,
+                                                    graph: [],
+                                                    items: [GraphNode(coordinates: item.location.coordinate)])
+        router.pushModule(module, animated: true, hideNavBar: false)
     }
 }

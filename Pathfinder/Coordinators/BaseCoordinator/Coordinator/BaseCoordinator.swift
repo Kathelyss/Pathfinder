@@ -23,7 +23,7 @@ class BaseCoordinator: Coordinatable {
     }
 
     func remove(child coordinator: Coordinatable?) {
-        guard !childCoordinators.isEmpty else {
+        guard childCoordinators.isNotEmpty else {
             return
         }
         guard let coordinator = coordinator else {

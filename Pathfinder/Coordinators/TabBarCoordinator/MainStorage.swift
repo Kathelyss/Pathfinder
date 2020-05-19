@@ -2,22 +2,22 @@ import Foundation
 
 class MainStorage {
 
-    var graph: [Node] {
+    var graph: [GraphNode] {
         return createGraph(with: MockEndPoints.nodes)
     }
 
-    var items: [Node] {
+    var items: [GraphNode] {
         return [graph[1], graph[3], graph[6], graph[12]]
     }
 
-    func parseNodes() throws -> [Node] {
+    func parseNodes() throws -> [GraphNode] {
         let url = Bundle.main.url(forResource: "nodes", withExtension: "plist")!
         let data = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
-        return try decoder.decode([Node].self, from: data)
+        return try decoder.decode([GraphNode].self, from: data)
     }
 
-    func createGraph(with nodes: [Node]) -> [Node] {
+    func createGraph(with nodes: [GraphNode]) -> [GraphNode] {
         nodes.forEach { node in
             let neighbours = nodes.filter {
                 ($0.coordinates.x == node.coordinates.x &&

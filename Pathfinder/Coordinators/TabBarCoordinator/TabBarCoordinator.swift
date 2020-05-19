@@ -38,10 +38,6 @@ final class TabBarCoordinator: BaseCoordinator {
             coordinator = GeneralCoordinator(router: router,
                                              moduleFactory: moduleFactory,
                                              mainStorage: storage)
-        case .waybill:
-            coordinator = WaybillCoordinator(router: router,
-                                             moduleFactory: moduleFactory,
-                                             mainStorage: storage)
 
         case .path:
             coordinator = PathCoordinator(router: router,

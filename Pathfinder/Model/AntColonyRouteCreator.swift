@@ -1,17 +1,6 @@
 import Foundation
 
-struct Ant {
-    var path = [Int]()
-}
-
-class AntColonyRouteCreator {
-    let alpha = 3.0
-    let beta = 2.0
-    let rho = 0.01
-
-    let maxTime = 100
-    let numberOfAnts = 10
-
+final class AntColonyRouteCreator {
     var distancesMatrix = Matrix<Int>()
     var ants = [Ant]()
     var pheromones = Matrix<Double>()
@@ -21,7 +10,7 @@ class AntColonyRouteCreator {
     init(dists: Matrix<Int>) {
         distancesMatrix = dists
         printDistMatrix()
-        ants = initAnts(count: numberOfAnts)
+        ants = initAnts(count: Constants.numberOfAnts)
         pheromones = Matrix<Double>(rows: distancesMatrix.columns,
                                     columns: distancesMatrix.columns,
                                     initValue: 0.01)
@@ -32,7 +21,7 @@ class AntColonyRouteCreator {
         var bestLength = lengthOf(shortestRoute)
         var time = 0
 
-        while time < maxTime {
+        while time < Constants.timeLimit {
             updateAnts()
             updatePheromones()
 
@@ -192,7 +181,7 @@ private extension AntColonyRouteCreator {
             if i == node || visitedNodes[i] {
                 taueta[i] = 0.0
             } else {
-                taueta[i] = pow(pheromones[node, i], alpha) * pow(1.0 / Double(distancesMatrix[node, i]), beta)
+                taueta[i] = pow(pheromones[node, i], Constants.alpha) * pow(1.0 / Double(distancesMatrix[node, i]), Constants.beta)
 
                 if taueta[i] < 0.0001 {
                     taueta[i] = 0.0001
@@ -219,7 +208,7 @@ private extension AntColonyRouteCreator {
         for i in 0..<pheromones.rows {
             for j in i+1..<pheromones.rows {
                 for k in 0..<ants.count {
-                    let decrease = (1.0 - rho) * pheromones[i, j]
+                    let decrease = (1.0 - Constants.rho) * pheromones[i, j]
                     let increase = isEdgeBetween(i, j, in: ants[k].path) ? 0.0 : 1/Double(lengthOf(ants[k].path))
                     pheromones[i, j] = decrease + increase
 
@@ -262,4 +251,12 @@ private extension AntColonyRouteCreator {
             return false
         }
     }
+}
+
+extension Constants {
+    static let alpha = 3.0
+    static let beta = 2.0
+    static let rho = 0.01
+    static let timeLimit = 100
+    static let numberOfAnts = 10
 }

@@ -2,7 +2,7 @@ import UIKit
 
 extension UIAlertController {
 
-    static func successfullResultActionSheet(_ clearHandler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+    static func  successfullResultActionSheet(_ clearHandler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
 
         let titleFont = [NSAttributedString.Key.font: UIFont.monospacedSystemFont(ofSize: 16, weight: .bold)]

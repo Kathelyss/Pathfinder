@@ -48,7 +48,7 @@ final class RequestButtonsView: BaseView {
     override func localize() {
         super.localize()
 
-        updateWarehouseStateButton.setTitle("Обновить наличие", for: .normal)
+        updateWarehouseStateButton.setTitle("Обновить склад", for: .normal)
         requestWaybillButton.setTitle("Получить накладную", for: .normal)
         clearTaskButton.setTitle("Очистить задание", for: .normal)
     }

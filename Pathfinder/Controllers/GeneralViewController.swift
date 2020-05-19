@@ -2,7 +2,7 @@ import UIKit
 import TableKit
 
 protocol GeneralModule: Presentable {
-
+    var onItemTap: ParameterClosure<WaybillItem>? { get set }
 }
 
 final class GeneralViewController: BaseConfigurableController<GeneralViewModel>, GeneralModule {
@@ -10,6 +10,8 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
     private let emptyView = EmptyView()
     private let buttonsView = RequestButtonsView()
     private let tableView = UITableView()
+
+    var onItemTap: ParameterClosure<WaybillItem>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +85,18 @@ final class GeneralViewController: BaseConfigurableController<GeneralViewModel>,
 
     private func configureTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
 
         tableView.register(ItemCell.self, forCellReuseIdentifier: ItemCell.reuseIdentifier)
         tableView.alwaysBounceVertical = true
-        tableView.allowsSelection = false
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension GeneralViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onItemTap?(viewModel.currentWaybillItems[indexPath.row])
     }
 }
 

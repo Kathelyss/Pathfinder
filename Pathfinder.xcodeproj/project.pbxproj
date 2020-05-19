@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23069428244FC0D30047DDD3 /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069427244FC0D30047DDD3 /* PathView.swift */; };
+		23069428244FC0D30047DDD3 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069427244FC0D30047DDD3 /* PlanView.swift */; };
 		2306942A244FC1E30047DDD3 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23069429244FC1E30047DDD3 /* Errors.swift */; };
 		23707B992442775100175FD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707B982442775100175FD9 /* AppDelegate.swift */; };
 		23707B9D2442775100175FD9 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707B9C2442775100175FD9 /* NavigationController.swift */; };
@@ -79,6 +79,7 @@
 		23707C522443ED3A00175FD9 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23707C512443ED3A00175FD9 /* ConfigurableView.swift */; };
 		23A4541124672D0D006A743A /* AStarPathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4541024672D0D006A743A /* AStarPathfinder.swift */; };
 		23A4541324673F89006A743A /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4541224673F89006A743A /* StyledButton.swift */; };
+		23A56592246F458B00561E5A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A56591246F458B00561E5A /* Array+Extensions.swift */; };
 		23BE9EEA2460A8C600572797 /* AntColonyRouteCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EE92460A8C600572797 /* AntColonyRouteCreator.swift */; };
 		23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEB24620FF800572797 /* UpperInfoView.swift */; };
 		23BE9EEF2462125600572797 /* UpperInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */; };
@@ -88,14 +89,15 @@
 		23BE9EF82462565E00572797 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */; };
 		23BE9EFB246345E300572797 /* MockEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFA246345E300572797 /* MockEndPoints.swift */; };
 		23BE9EFD2463842C00572797 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9EFC2463842C00572797 /* Matrix.swift */; };
-		23BE9F012464AF6E00572797 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F002464AF6E00572797 /* Node.swift */; };
+		23BE9F012464AF6E00572797 /* GraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F002464AF6E00572797 /* GraphNode.swift */; };
 		23BE9F052465008200572797 /* TabBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F042465008200572797 /* TabBarAnimator.swift */; };
 		23BE9F072465009F00572797 /* TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F062465009F00572797 /* TabBarPosition.swift */; };
+		23BF13202473173B0062CD0D /* Ant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BF131F2473173B0062CD0D /* Ant.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23069427244FC0D30047DDD3 /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
+		23069427244FC0D30047DDD3 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
 		23069429244FC1E30047DDD3 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		23707B952442775100175FD9 /* Pathfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pathfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23707B982442775100175FD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		23707C512443ED3A00175FD9 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		23A4541024672D0D006A743A /* AStarPathfinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathfinder.swift; sourceTree = "<group>"; };
 		23A4541224673F89006A743A /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		23A56591246F458B00561E5A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		23BE9EE92460A8C600572797 /* AntColonyRouteCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntColonyRouteCreator.swift; sourceTree = "<group>"; };
 		23BE9EEB24620FF800572797 /* UpperInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoView.swift; sourceTree = "<group>"; };
 		23BE9EEE2462125600572797 /* UpperInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperInfoViewModel.swift; sourceTree = "<group>"; };
@@ -178,9 +181,10 @@
 		23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		23BE9EFA246345E300572797 /* MockEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndPoints.swift; sourceTree = "<group>"; };
 		23BE9EFC2463842C00572797 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
-		23BE9F002464AF6E00572797 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		23BE9F002464AF6E00572797 /* GraphNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNode.swift; sourceTree = "<group>"; };
 		23BE9F042465008200572797 /* TabBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimator.swift; sourceTree = "<group>"; };
 		23BE9F062465009F00572797 /* TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPosition.swift; sourceTree = "<group>"; };
+		23BF131F2473173B0062CD0D /* Ant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ant.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				23707C3B2443DD4000175FD9 /* UILabel+ViewTextConfigurable.swift */,
 				23707C3D2443DD6700175FD9 /* UIButton+ViewTextConfigurable.swift */,
 				23BE9EF72462565E00572797 /* UIAlertController+Extensions.swift */,
+				23A56591246F458B00561E5A /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -450,7 +455,7 @@
 		23707C0D2442A88800175FD9 /* PathController */ = {
 			isa = PBXGroup;
 			children = (
-				23069427244FC0D30047DDD3 /* PathView.swift */,
+				23069427244FC0D30047DDD3 /* PlanView.swift */,
 				23707C0E2442A8CD00175FD9 /* ModuleFactory+PathModule.swift */,
 				23707C102442A90C00175FD9 /* PathViewController.swift */,
 				23707C122442A99900175FD9 /* PathViewModel.swift */,
@@ -555,11 +560,12 @@
 		23BE9EF92463459900572797 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				23BE9F002464AF6E00572797 /* Node.swift */,
+				23BE9F002464AF6E00572797 /* GraphNode.swift */,
 				23A4541024672D0D006A743A /* AStarPathfinder.swift */,
 				23BE9EE92460A8C600572797 /* AntColonyRouteCreator.swift */,
 				23BE9EFC2463842C00572797 /* Matrix.swift */,
 				23BE9EFA246345E300572797 /* MockEndPoints.swift */,
+				23BF131F2473173B0062CD0D /* Ant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -698,6 +704,7 @@
 				23BE9EEF2462125600572797 /* UpperInfoViewModel.swift in Sources */,
 				23707C2724437FDA00175FD9 /* UIView+RoundedShadow.swift in Sources */,
 				23BE9EEC24620FF800572797 /* UpperInfoView.swift in Sources */,
+				23BF13202473173B0062CD0D /* Ant.swift in Sources */,
 				23707BCB2442897B00175FD9 /* Instructor.swift in Sources */,
 				23707BC5244288B900175FD9 /* CoordinatorGroup.swift in Sources */,
 				23BE9EF124622B1C00572797 /* RequestButtonsView.swift in Sources */,
@@ -705,13 +712,14 @@
 				23707C132442A99900175FD9 /* PathViewModel.swift in Sources */,
 				23707B9D2442775100175FD9 /* NavigationController.swift in Sources */,
 				23707C182442AC0800175FD9 /* PathModuleFactory.swift in Sources */,
-				23BE9F012464AF6E00572797 /* Node.swift in Sources */,
+				23A56592246F458B00561E5A /* Array+Extensions.swift in Sources */,
+				23BE9F012464AF6E00572797 /* GraphNode.swift in Sources */,
 				23707B992442775100175FD9 /* AppDelegate.swift in Sources */,
 				23707BF6244295F500175FD9 /* TabBarCoordinator.swift in Sources */,
 				23707C442443DE8600175FD9 /* ConfigurableController.swift in Sources */,
 				23707C2224437E2400175FD9 /* GeneralModuleFactory.swift in Sources */,
 				23707C2524437E3F00175FD9 /* GeneralCoordinator.swift in Sources */,
-				23069428244FC0D30047DDD3 /* PathView.swift in Sources */,
+				23069428244FC0D30047DDD3 /* PlanView.swift in Sources */,
 				23707BE724428F8700175FD9 /* UIViewController+Extensions.swift in Sources */,
 				23707BDF24428D8900175FD9 /* ModalRoutable.swift in Sources */,
 				23707C2024437DC100175FD9 /* ModuleFactory+GeneralModule.swift in Sources */,
