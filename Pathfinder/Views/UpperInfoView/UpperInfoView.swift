@@ -5,9 +5,11 @@ final class UpperInfoView: BaseView {
     private let stackView = UIStackView()
     private let routeButton = StyledButton()
     private let roundedContainer = UIView()
+    private let clearRouteButton = StyledButton()
     private var titleLabel = UILabel()
 
     var onButtonTap: VoidBlock?
+    var onClearRoute: VoidBlock?
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -19,7 +21,7 @@ final class UpperInfoView: BaseView {
         super.addViews()
 
         roundedContainer.addSubview(titleLabel)
-        [roundedContainer, routeButton].forEach {
+        [roundedContainer, clearRouteButton, routeButton].forEach {
             stackView.addArrangedSubview($0)
         }
         addSubview(stackView)
@@ -29,6 +31,7 @@ final class UpperInfoView: BaseView {
         super.bindViews()
 
         routeButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        clearRouteButton.addTarget(self, action: #selector(clearRoute), for: .touchUpInside)
     }
 
     override func configureLayout() {
@@ -40,6 +43,10 @@ final class UpperInfoView: BaseView {
 
         routeButton.snp.makeConstraints {
             $0.height.equalTo(40)
+        }
+
+        clearRouteButton.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 40, height: 40))
         }
 
         roundedContainer.snp.makeConstraints {
@@ -65,6 +72,9 @@ final class UpperInfoView: BaseView {
         roundedContainer.backgroundColor = .white
         layer.cornerRadius = Constants.cornerRadius
 
+        clearRouteButton.setImage(.closeIcon, for: .normal)
+        clearRouteButton.isHidden = true
+
         titleLabel.textColor = .systemBlue
         titleLabel.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
         titleLabel.textAlignment = .center
@@ -79,9 +89,21 @@ final class UpperInfoView: BaseView {
 
     @objc private func buttonAction() {
         layoutIfNeeded()
-//        roundedContainer.isHidden = false
-//        routeButton.isHidden = true
+        [roundedContainer, clearRouteButton].forEach {
+            $0.isHidden = false
+        }
+        routeButton.isHidden = true
         onButtonTap?()
+    }
+
+    @objc
+    private func clearRoute() {
+        layoutIfNeeded()
+        [roundedContainer, clearRouteButton].forEach {
+            $0.isHidden = true
+        }
+        routeButton.isHidden = false
+        onClearRoute?()
     }
 }
 

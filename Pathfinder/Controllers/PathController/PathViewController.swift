@@ -11,6 +11,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
     private let emptyView = EmptyView()
     private var upperInfoView = UpperInfoView()
     private var planImageView = UIImageView()
+    private var nextPositionButton = StyledButton()
     private var planView: PlanView!
     private var isMapViewAdded = false
 
@@ -39,6 +40,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         view.addSubview(scrollView)
         view.addSubview(emptyView)
         view.addSubview(upperInfoView)
+        view.addSubview(nextPositionButton)
     }
 
     override func bindViews() {
@@ -46,6 +48,10 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
         upperInfoView.onButtonTap = { [weak viewModel] in
             viewModel?.createRoute()
+        }
+
+        upperInfoView.onClearRoute = { [weak self] in
+            self?.clearRoute()
         }
 
         viewModel.itemsRecievedDriver
@@ -59,6 +65,8 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
                 self?.drawPath()
             })
             .disposed(by: disposeBag)
+
+        nextPositionButton.addTarget(self, action: #selector(handleNewPassedPosition), for: .touchUpInside)
     }
 
     override func configureLayout() {
@@ -71,7 +79,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
         upperInfoView.snp.makeConstraints {
             $0.top.equalTo(actualLayoutGuide).inset(Constants.smallInset)
-            $0.leading.trailing.equalToSuperview().inset(Constants.defaultInset)
+            $0.leading.trailing.equalToSuperview().inset(Constants.smallInset)
             $0.height.lessThanOrEqualTo(80)
         }
 
@@ -83,7 +91,13 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         scrollView.snp.makeConstraints {
             $0.top.equalTo(upperInfoView.snp.bottom).offset(Constants.defaultInset)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(Constants.tabbarHeight + Constants.defaultInset)
+            $0.bottom.equalToSuperview().inset(Constants.bottomOffset)
+        }
+
+        nextPositionButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(Constants.bottomOffset)
+            $0.size.equalTo(CGSize(width: 80, height: 35))
         }
     }
 
@@ -95,6 +109,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         setupScrollView()
         emptyView.isHidden = !planImageView.isHidden
         upperInfoView.isHidden = viewModel.navigationTitle != "Маршрут"
+        nextPositionButton.isHidden = true
     }
 
     override func localize() {
@@ -103,6 +118,7 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
         navigationItem.title = viewModel.navigationTitle
         emptyView.configure(with: .noPath)
         upperInfoView.configure(with: .mockInfo)
+        nextPositionButton.setTitle("Далее", for: .normal)
     }
 
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -125,6 +141,18 @@ final class PathViewController: BaseConfigurableController<PathViewModel>, PathM
 
 private extension PathViewController {
 
+    @objc
+    func clearRoute() {
+        viewModel.path = []
+        planView.path = []
+        nextPositionButton.isHidden = true
+    }
+
+    @objc
+    func handleNewPassedPosition() {
+        // MOCK: add new node passing drawing
+    }
+
     func drawMap() {
         if !isMapViewAdded {
             isMapViewAdded = true
@@ -143,6 +171,7 @@ private extension PathViewController {
 
     func drawPath() {
         planView.path = viewModel.path
+        nextPositionButton.isHidden = false
     }
 
     func presentSuccessfullResultAlert() {
@@ -164,5 +193,8 @@ private extension PathViewController {
         scrollView.zoomScale = scrollView.minimumZoomScale
         scrollView.contentSize = CGSize(width: view.bounds.width * 2, height: view.bounds.height * 2)//planImageView.frame.size
     }
+}
 
+extension Constants {
+    static let bottomOffset: CGFloat = Constants.tabbarHeight + Constants.smallInset
 }
