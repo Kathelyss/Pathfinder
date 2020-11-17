@@ -191,7 +191,7 @@ private extension PathViewController {
     func setupScrollView() {
         //        scrollView.minimumZoomScale = 0.2
         scrollView.zoomScale = scrollView.minimumZoomScale
-        scrollView.contentSize = CGSize(width: view.bounds.width * 2, height: view.bounds.height * 2)//planImageView.frame.size
+        scrollView.contentSize = planImageView.frame.size
     }
 }
 

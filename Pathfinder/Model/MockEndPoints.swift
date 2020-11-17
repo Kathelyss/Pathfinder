@@ -18,6 +18,12 @@ struct WaybillItem {
     let location: ItemLocation
 }
 
+struct Waybill {
+    let articles: [Article]
+    let items: [WaybillItem]
+    let locations: [ItemLocation]
+}
+
 struct MockEndPoints {
 
     static let articles = [Article](repeating: Article(name: "Батарейка",
@@ -60,6 +66,8 @@ struct MockEndPoints {
                         GraphNode(coordinates: CGPoint(x: 2, y: 3)), GraphNode(coordinates: CGPoint(x: 3, y: 0)),
                         GraphNode(coordinates: CGPoint(x: 3, y: 1)), GraphNode(coordinates: CGPoint(x: 3, y: 2)),
                         GraphNode(coordinates: CGPoint(x: 3, y: 3))]
+
+ 
 }
 // передать стеллажи
 // 

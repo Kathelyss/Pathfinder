@@ -28,13 +28,13 @@ final class ItemCell: UITableViewCell, InitializableView, ConfigurableCell {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Constants.smallInset)
             $0.leading.equalToSuperview().inset(Constants.mediumInset)
-            $0.trailing.equalTo(forwardIcon.snp.leading).offset(-Constants.smallInset)
+            $0.trailing.lessThanOrEqualTo(forwardIcon.snp.leading).offset(-Constants.smallInset)
         }
 
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Constants.tinyInset)
             $0.leading.equalToSuperview().inset(Constants.mediumInset)
-            $0.trailing.equalTo(forwardIcon.snp.leading).offset(-Constants.smallInset)
+            $0.trailing.lessThanOrEqualTo(forwardIcon.snp.leading).offset(-Constants.smallInset)
             $0.bottom.equalToSuperview().inset(Constants.smallInset)
         }
 

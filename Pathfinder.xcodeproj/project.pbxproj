@@ -93,6 +93,7 @@
 		23BE9F052465008200572797 /* TabBarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F042465008200572797 /* TabBarAnimator.swift */; };
 		23BE9F072465009F00572797 /* TabBarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE9F062465009F00572797 /* TabBarPosition.swift */; };
 		23BF13202473173B0062CD0D /* Ant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BF131F2473173B0062CD0D /* Ant.swift */; };
+		23BF132224745D350062CD0D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BF132124745D350062CD0D /* ApiManager.swift */; };
 		2EAE88E586E9A0AB376F1945 /* Pods_Pathfinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +186,7 @@
 		23BE9F042465008200572797 /* TabBarAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAnimator.swift; sourceTree = "<group>"; };
 		23BE9F062465009F00572797 /* TabBarPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPosition.swift; sourceTree = "<group>"; };
 		23BF131F2473173B0062CD0D /* Ant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ant.swift; sourceTree = "<group>"; };
+		23BF132124745D350062CD0D /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		6B659669A9C8A9A35E3D755E /* Pods-Pathfinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.debug.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.debug.xcconfig"; sourceTree = "<group>"; };
 		7B08F03EBD80DEF0658C4FE0 /* Pods_Pathfinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pathfinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEF3611DFF58E270BD53008C /* Pods-Pathfinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pathfinder.release.xcconfig"; path = "Target Support Files/Pods-Pathfinder/Pods-Pathfinder.release.xcconfig"; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				23BE9EFC2463842C00572797 /* Matrix.swift */,
 				23BE9EFA246345E300572797 /* MockEndPoints.swift */,
 				23BF131F2473173B0062CD0D /* Ant.swift */,
+				23BF132124745D350062CD0D /* ApiManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				23707BDB24428D5200175FD9 /* AppRoutable.swift in Sources */,
 				23A4541324673F89006A743A /* StyledButton.swift in Sources */,
 				23707C0C2442A18B00175FD9 /* MainStorage.swift in Sources */,
+				23BF132224745D350062CD0D /* ApiManager.swift in Sources */,
 				23707BE224428DC400175FD9 /* Presentable.swift in Sources */,
 				23707C2E244395DF00175FD9 /* WaybillViewModel.swift in Sources */,
 			);
